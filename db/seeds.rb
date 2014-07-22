@@ -1,4 +1,4 @@
-buildings = 1
+buildings = 200
 tenants = [1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
 app_per_building = (20..100)
 managers = (buildings * 0.7).to_i
