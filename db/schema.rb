@@ -31,11 +31,6 @@ ActiveRecord::Schema.define(version: 20140721223044) do
     t.datetime "updated_at"
   end
 
-  create_table "categories_issues", id: false, force: true do |t|
-    t.integer "issue_id"
-    t.integer "category_id"
-  end
-
   create_table "comments", force: true do |t|
     t.text     "message"
     t.integer  "issue_id"
@@ -64,6 +59,11 @@ ActiveRecord::Schema.define(version: 20140721223044) do
     t.integer  "tenant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "isues_categories", id: false, force: true do |t|
+    t.integer "issue_id"
+    t.integer "category_id"
   end
 
   create_table "managers", force: true do |t|
