@@ -1,4 +1,4 @@
-= link_to 'Back', company_path
+/ = link_to 'Back', company_path
 
 = form_for @buildings do |f|
 
