@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140721223044) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "buildings", force: true do |t|
     t.string   "address"
     t.integer  "company_id"
