@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721223044) do
+ActiveRecord::Schema.define(version: 20140722181113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "buildings", force: true do |t|
-    t.string   "address"
+    t.string   "street"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "country"
     t.integer  "company_id"
     t.integer  "manager_id"
     t.datetime "created_at"
@@ -39,16 +42,12 @@ ActiveRecord::Schema.define(version: 20140721223044) do
   create_table "comments", force: true do |t|
     t.text     "message"
     t.integer  "issue_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "companies", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "password_digest"
-    t.string   "email"
-    t.string   "phone_number"
     t.string   "address"
     t.string   "company_name"
     t.datetime "created_at"
@@ -67,27 +66,30 @@ ActiveRecord::Schema.define(version: 20140721223044) do
   end
 
   create_table "managers", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "password_digest"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tenants", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "password_digest"
-    t.string   "email"
-    t.string   "phone_number"
     t.string   "apartment"
     t.boolean  "is_approved"
     t.integer  "building_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "users", force: true do |t|
+    t.integer  "as_user_id"
+    t.string   "as_user_type"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["as_user_id", "as_user_type"], name: "users_as_user_index", using: :btree
 
 end

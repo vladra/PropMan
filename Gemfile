@@ -21,3 +21,5 @@ group :development do
 end
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'acts_as_relation', '~> 1.0'
+gem 'sorcery'

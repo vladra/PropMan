@@ -41,15 +41,18 @@ managers.times do |i|
 	# m.password		= Faker::Internet.password
 	m.email				= Faker::Internet.free_email
 	m.phone_number= Faker::PhoneNumber.cell_phone
-	m.address			= Faker::Address.secondary_address
 	m.save
 end
 
 print "Adding buildings and tenants "
 buildings.times do |i|
-	b = Building.create(address: Faker::Address.street_address)
+	b = Building.new
+	b.street			= Faker::Address.street_address
+	b.postal_code	= Faker::Address.postcode
+	b.city				= Faker::Address.city
+	b.country			= 'Canada'
 	app_per_building.to_a.sample.times do
-		address = Faker::Address.secondary_address
+		app_num = Faker::Address.secondary_address
 		tenants.sample.times do
 			t = Tenant.new
 			t.first_name	= Faker::Name.first_name
@@ -57,7 +60,7 @@ buildings.times do |i|
 			# t.password		= Faker::Internet.password
 			t.email				= Faker::Internet.free_email
 			t.phone_number= Faker::PhoneNumber.cell_phone
-			t.apartment		= address
+			t.apartment		= app_num
 			t.is_approved	= true
 			t.building		= b
 			t.save
@@ -104,6 +107,7 @@ Issue.all.count.times do |i|
 		c = Comment.new
 		c.message = Faker::Lorem.paragraph
 		c.issue_id = rand(Issue.all.count) + 1
+		fifty_fifty.sample ? c.user = c.issue.tenant : c.user = c.issue.tenant.building.manager
 		c.save
 	end
 	if i%1000 == 0
