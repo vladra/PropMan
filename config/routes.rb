@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'issues/index'
+
+  get 'issues/new'
+
+  get 'issues/create'
+
+  get 'issues/show'
+
   resources :buildings
 
   # The priority is based upon order of creation: first created -> highest priority.
