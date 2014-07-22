@@ -1,0 +1,13 @@
+/ = link_to 'Back', company_path
+
+= form_for @buildings do |f|
+
+	= f.label :address
+	= f.text_area :address
+
+	= f.submit
+
+//	= f.label :units
+//	= f.text_area :units
+
+// do we need no of units as an option?
