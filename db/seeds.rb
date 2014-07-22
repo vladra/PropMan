@@ -65,6 +65,7 @@ buildings.times do |i|
 	end
 	b.manager_id = rand(Manager.all.count) + 1
 	b.company_id = rand(Company.all.count) + 1 if fifty_fifty.sample
+	b.save
 	if i%5 == 0
 		print '.'
 	end
