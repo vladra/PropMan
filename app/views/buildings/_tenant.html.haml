@@ -1,0 +1,40 @@
+%b First Name:
+= tenant.first_name
+%br
+%b Last Name:
+= tenant.last_name
+%br
+%b Email
+= tenant.email
+%br
+%b Phone Number
+%br
+= tenant.phone_number
+%b Apartment
+%br
+= tenant.apartment
+%b Total no of Issues
+%br
+= tenant.issues.count
+= tenant.issues.each do |issue|
+	%b Title
+	%br
+	= issue.title
+	%b Message
+	%br
+	= issue.message
+	%b Compete Date
+	%br
+	= issue.complete_date
+	%b Rating
+	%br
+	= issue.rating
+	%b Created Date
+	%br
+	= issue.created_date
+	%b Updated At
+	%br
+	= issue.updated_at
+	%b Status
+	%br
+	= issue.status
