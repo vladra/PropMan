@@ -1,4 +1,51 @@
-= building.address
-= building.manager
-= building.company
-= render building.tenants
+%b Company
+= @building.company.first_name
+%br
+%b Manager
+= @building.manager.first_name
+%br
+%b Building Address:
+= @building.street
+%br
+= @building.postal_code
+%br
+= @building.city
+%br
+= @building.country
+%br
+%br
+- @building.tenants.each do |tenant|
+	%b First Name:
+	= tenant.first_name
+	%br
+	%b Last Name:
+	= tenant.last_name
+	%br
+	%b Email:
+	= tenant.email
+	%br
+	%b Phone Number:
+	= tenant.phone_number
+	%br
+	%b Apartment:
+	= tenant.apartment
+	%br
+	%b Total no of Issues:
+	= tenant.issues.count
+	%br
+	- tenant.issues.each do |issue|
+		%b Title:
+		= issue.title
+		%br
+		%b Message:
+		= issue.message
+		%br
+		%b Complete Date:
+		= issue.complete_date
+		%br
+		%b Rating:
+		= issue.rating
+		%br
+		%b Status:
+		= issue.status
+		%hr
