@@ -30,22 +30,21 @@
 	%b Apartment:
 	= tenant.apartment
 	%br
-	%b Total no of Issues:
+	= link_to "Total no of Issues:"
 	= tenant.issues.count
 	%br
-	- tenant.issues.each do |issue|
-		%b Title:
-		= issue.title
-		%br
-		%b Message:
-		= issue.message
-		%br
-		%b Complete Date:
-		= issue.complete_date
-		%br
-		%b Rating:
-		= issue.rating
-		%br
-		%b Status:
-		= issue.status
-		%hr
+	%hr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
