@@ -36,11 +36,9 @@
 / ** ask if you can show only an apartment number once and tenants living in that apartment number
 
 - @building.tenants.each do |tenant|
-	%b First Name:
-	= tenant.first_name
-	%br
-	%b Last Name:
-	= tenant.last_name
+	%b Name:
+	= link_to tenant.first_name
+	= link_to tenant.last_name
 	%br
 	%b Email:
 	= tenant.email
@@ -51,7 +49,7 @@
 	%b Apartment:
 	= tenant.apartment
 	%br
-	= link_to "Total no of Issues:"
+	%b Total no of Issues:
 	= tenant.issues.count
 	%br
 	%hr
