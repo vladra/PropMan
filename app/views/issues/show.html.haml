@@ -1,2 +1,18 @@
-%h1 Issues#show
-%p Find me in app/views/issues/show.html.haml
+%b Tenant :
+= @issue.tenant.first_name
+%br
+%b Title :
+= @issue.title
+%br
+%b Message :
+= @issue.message
+%br
+%b Complete Date :
+= @issue.complete_date
+%br
+%b Status :
+= @issue.status
+%br
+%b Rating :
+= @issue.rating
+

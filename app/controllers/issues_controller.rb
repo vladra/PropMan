@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
 
   def index
-  	@issues = Issues.all
+  	@issues = Issue.all
   end
 
   def new
