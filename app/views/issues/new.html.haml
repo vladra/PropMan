@@ -1,2 +1,15 @@
 %h1 Please let us know about your Issue
+= form_for @issue do |f|
+
+	= f.label :title
+	%br
+	= f.text_field :title
+	%br
+	%br
+	= f.label :message
+	%br
+	= f.text_field :message
+	%br
+	%br
+	= f.submit
 
