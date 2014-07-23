@@ -1,8 +1,0 @@
-= form_for @building do |f|
-
-	= f.label :address
-	%br
-	= f.text_area :address
-	%br
-
-	= f.submit

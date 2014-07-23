@@ -1,3 +1,24 @@
+%h1 Edit Building
+= form_for @building do |f|
 
- %h1 Edit Building
-  = render 'new_building'
+	= f.label :street
+	%br
+	= f.text_field :street
+	%br
+	%br
+	= f.label :postal_code
+	%br
+	= f.text_field :postal_code
+	%br
+	%br
+	= f.label :city
+	%br
+	= f.text_field :city
+	%br
+	%br
+	= f.label :country
+	%br
+	= f.text_field :country
+	%br
+	%br
+	= f.submit
