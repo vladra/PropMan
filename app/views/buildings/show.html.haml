@@ -19,12 +19,34 @@
 = @building.country
 %br
 %br
-%b Total tenants in the Building:
+= link_to "Total tenants in the Building:"
 = @building.tenants.count
 %br
 %b Total issues in the Building:
 = @building.issues.count
 %br
+%hr
+- @building.issues.each do |issue|
+	%b Tenant :
+	= issue.tenant.first_name
+	%br
+	%b Title :
+	= issue.title
+	%br
+	%b Message :
+	= issue.message
+	%br
+	%b Complete Date :
+	= issue.complete_date
+	%br
+	%b Status :
+	= issue.status
+	%br
+	%b Rating :
+	= issue.rating
+	%hr
+
+
 / = @building.no_of_done_issues
 
 / = @building.avg_time_for_complain
@@ -35,25 +57,24 @@
 / ** average ratings
 / ** ask if you can show only an apartment number once and tenants living in that apartment number
 
-- @building.tenants.each do |tenant|
-	%b Name:
-	= link_to tenant.first_name
-	= link_to tenant.last_name
-	%br
-	%b Email:
-	= tenant.email
-	%br
-	%b Phone Number:
-	= tenant.phone_number
-	%br
-	%b Apartment:
-	= tenant.apartment
-	%br
-	%b Total no of Issues:
-	= tenant.issues.count
-	%br
-	%hr
-
+/ - @building.tenants.each do |tenant|
+/ 	%b Name:
+/ 	= link_to tenant.first_name
+/ 	= link_to tenant.last_name
+/ 	%br
+/ 	%b Email:
+/ 	= tenant.email
+/ 	%br
+/ 	%b Phone Number:
+/ 	= tenant.phone_number
+/ 	%br
+/ 	%b Apartment:
+/ 	= tenant.apartment
+/ 	%br
+/ 	= link_to "Total no of Issues:" , issue_path
+/ 	= tenant.issues.count
+/ 	%br
+/ 	%hr
 
 
 
