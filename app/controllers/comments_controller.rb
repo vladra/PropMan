@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
   		redirect_to issue_path
   	else
   		render :new
+  	end
   end
 
   def destroy
