@@ -1,24 +1,21 @@
-%b Company
-= @building.company.first_name
-%br
-%b Manager
-= @building.manager.first_name
-%br
-%b Building Address:
-%br
-%b Street:
-= @building.street
-%br
-%b Postal Code
-= @building.postal_code
-%br
-%b City
-= @building.city
-%br
-%b Country
-= @building.country
-%br
-%br
+/ %b Manager
+/ = @building.manager.first_name
+/ %br
+/ %b Building Address:
+/ %br
+/ %b Street:
+/ = @building.street
+/ %br
+/ %b Postal Code
+/ = @building.postal_code
+/ %br
+/ %b City
+/ = @building.city
+/ %br
+/ %b Country
+/ = @building.country
+/ %br
+/ %br
 = link_to "Total tenants in the Building:"
 = @building.tenants.count
 %br
@@ -27,17 +24,18 @@
 %br
 %hr
 - @building.issues.each do |issue|
+	= link_to "Title :", issue_path
+	= issue.title
+	%br
+	%br
+	%b Message :
+	= issue.message
+	%br
 	%b Tenant :
 	= issue.tenant.first_name
 	%br
 	%b Apartment :
 	= issue.tenant.apartment
-	%br
-	= link_to "Title :", issue_path
-	= issue.title
-	%br
-	%b Message :
-	= issue.message
 	%br
 	%b Complete Date :
 	= issue.complete_date
@@ -48,7 +46,6 @@
 	%b Rating :
 	= issue.rating
 	%hr
-
 
 / = @building.no_of_done_issues
 
