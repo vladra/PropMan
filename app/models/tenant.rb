@@ -6,4 +6,8 @@ class Tenant < ActiveRecord::Base
 	has_many :issues
 	has_many :comments, as: :commentable
 	belongs_to :building
+
+	def full_name
+		"#{first_name} #{last_name}"
+	end
 end

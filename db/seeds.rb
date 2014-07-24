@@ -2,7 +2,6 @@ buildings = 200
 tenants = [1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
 app_per_building = (20..100)
 managers = (buildings * 0.7).to_i
-companies = (buildings * 0.05).to_i
 fifty_fifty = [false, true]
 statuses = [:new, :done, :done, :done, :done]
 start_time = Time.now
@@ -18,19 +17,6 @@ Category.all.count.times do |i|
 	[3,4,5,6,7].sample.times do
 		Category.create(name: Faker::Commerce.department, parent_id: i+1)
 	end
-end
-
-puts "Adding companies.."
-companies.times do |i|
-	c = Company.new
-	c.first_name	= Faker::Name.first_name
-	c.last_name		= Faker::Name.last_name
-	# c.password		= Faker::Internet.password
-	c.email				= Faker::Internet.free_email
-	c.phone_number= Faker::PhoneNumber.cell_phone
-	c.address			= Faker::Address.secondary_address
-	c.company_name= Faker::Company.name
-	c.save
 end
 
 puts "Adding managers.."
@@ -57,7 +43,7 @@ buildings.times do |i|
 			t = Tenant.new
 			t.first_name	= Faker::Name.first_name
 			t.last_name		= Faker::Name.last_name
-			# t.password		= Faker::Internet.password
+			t.password		= Faker::Internet.password(8, 12)
 			t.email				= Faker::Internet.free_email
 			t.phone_number= Faker::PhoneNumber.cell_phone
 			t.apartment		= app_num
