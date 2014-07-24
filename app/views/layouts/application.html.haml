@@ -9,12 +9,15 @@
 	%body
 
 		#header
+			= render 'layouts/header'
 
 		#sidebar
+			= render 'layouts/sidebar'
 
 		#content
 			.content-wrapper
-				=yield
+				= render 'layouts/flash'
+				= yield
 			.clearfix
 
 
