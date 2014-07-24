@@ -18,4 +18,18 @@ class Tenant < ActiveRecord::Base
 	def num_of_pending_issues
 		issues.where.not(status: 'done').count
 	end
+
+	def completed_issues
+		issues.where.not(complete_date: nil)
+	end
+
+	def avg_issue_time
+		d = completed_issues
+		if d.any?
+			d.pluck(:complete_date, :created_at).reduce(0) {|t, i| t+= (i.complete_date - i.created_at)} / d.count / 60 / 60 / 24
+		else
+			'--'
+		end
+	end
+
 end
