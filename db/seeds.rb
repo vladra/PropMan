@@ -1,4 +1,4 @@
-buildings = 200
+buildings = 2
 tenants = [1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
 app_per_building = (20..100)
 managers = (buildings * 0.7).to_i
@@ -21,13 +21,16 @@ end
 
 puts "Adding managers.."
 managers.times do |i|
+	saved = false
 	m = Manager.new
 	m.first_name	= Faker::Name.first_name
 	m.last_name		= Faker::Name.last_name
-	# m.password		= Faker::Internet.password
-	m.email				= Faker::Internet.free_email
+	m.password		= Faker::Internet.password(8, 12)
 	m.phone_number= Faker::PhoneNumber.cell_phone
-	m.save
+	while !saved do
+		m.email = Faker::Internet.email
+		saved = true if m.save
+	end
 end
 
 print "Adding buildings and tenants "
@@ -40,20 +43,22 @@ buildings.times do |i|
 	app_per_building.to_a.sample.times do
 		app_num = Faker::Address.secondary_address
 		tenants.sample.times do
+			saved = false
 			t = Tenant.new
 			t.first_name	= Faker::Name.first_name
 			t.last_name		= Faker::Name.last_name
 			t.password		= Faker::Internet.password(8, 12)
-			t.email				= Faker::Internet.free_email
 			t.phone_number= Faker::PhoneNumber.cell_phone
 			t.apartment		= app_num
 			t.is_approved	= true
 			t.building		= b
-			t.save
+			while !saved do
+				t.email	= Faker::Internet.email
+				saved = true if t.save
+			end
 		end
 	end
 	b.manager_id = rand(Manager.all.count) + 1
-	b.company_id = rand(Company.all.count) + 1 if fifty_fifty.sample
 	b.save
 	if i%5 == 0
 		print '.'
@@ -93,7 +98,13 @@ Issue.all.count.times do |i|
 		c = Comment.new
 		c.message = Faker::Lorem.paragraph
 		c.issue_id = rand(Issue.all.count) + 1
-		fifty_fifty.sample ? c.user = c.issue.tenant : c.user = c.issue.tenant.building.manager
+		if fifty_fifty.sample
+			c.commentable_id = c.issue.tenant.id
+			c.commentable_type = 'Tenant'
+		else
+			c.commentable_id = c.issue.tenant.building.manager.id
+			c.commentable_type = 'Manager'
+		end
 		c.save
 	end
 	if i%1000 == 0
@@ -106,7 +117,6 @@ finish_time = Time.now
 puts
 puts "----- RESULT -----"
 puts "#{Category.all.count} categories added"
-puts "#{Company.all.count} companies added"
 puts "#{Manager.all.count} managers added"
 puts "#{Building.all.count} buildings added"
 puts "#{Tenant.all.count} tenants added"
