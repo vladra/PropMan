@@ -1,4 +1,4 @@
-buildings = 2
+buildings = 100
 tenants = [1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
 app_per_building = (20..100)
 managers = (buildings * 0.7).to_i
@@ -10,11 +10,11 @@ puts "---------"
 puts "  SEEDS  "
 puts "---------"
 puts "Adding categories.."
-10.times do
+6.times do
 	Category.create(name: Faker::Commerce.department)
 end
 Category.all.count.times do |i|
-	[3,4,5,6,7].sample.times do
+	[2,3,4,5,6].sample.times do
 		Category.create(name: Faker::Commerce.department, parent_id: i+1)
 	end
 end
@@ -58,7 +58,7 @@ buildings.times do |i|
 			end
 		end
 	end
-	b.manager_id = rand(Manager.all.count) + 1
+	b.manager_id = Manager.all.sample.id
 	b.save
 	if i%5 == 0
 		print '.'
@@ -82,10 +82,10 @@ buildings.times do |id|
 		else
 			i.created_at = Time.now - rand(1..9).days - rand(0..23).hours - rand(0..59).minutes
 		end
-		i.tenant_id = rand(Tenant.all.count) + 1
+		i.tenant_id = Tenant.all.sample.id
 		i.save
 		i.categories << Category.all.sample
-		if y%500 == 0
+		if y%1000 == 0
 			print '.'
 		end
 	end
@@ -97,7 +97,7 @@ Issue.all.count.times do |i|
 	if fifty_fifty.sample
 		c = Comment.new
 		c.message = Faker::Lorem.paragraph
-		c.issue_id = rand(Issue.all.count) + 1
+		c.issue_id = Issue.all.sample.id
 		if fifty_fifty.sample
 			c.commentable_id = c.issue.tenant.id
 			c.commentable_type = 'Tenant'
