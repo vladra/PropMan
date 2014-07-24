@@ -5,7 +5,6 @@ class CreateBuildings < ActiveRecord::Migration
       t.string :postal_code
       t.string :city
       t.string :country
-      t.belongs_to :company
       t.belongs_to :manager
 
       t.timestamps
