@@ -1,9 +1,23 @@
-%b Total Buildings :
+
+/ things need to be added :
+/ list all the categories and count the number of issues in that category
+/ calculate the average complettion time of an issue
+/ have a pie chart showing which category had most of the issues
+/ Calculate the overall rating of the building
+
+
+%b Welcome #{@manager.first_name} #{@manager.last_name}
+%br
+%b You have total :
 = @manager.buildings.count
+%b Buildings
 %br
-%b Total Issues :
+%b Your Buildings have total :
 = @manager.issues.count
+%b Issues
 %br
+%b Comments :
+= @manager.comments.count
 %br
 %br
 
@@ -23,4 +37,5 @@
 	= link_to "Total Issues :", building_path
 	= building.issues.count
 	%hr
+
 

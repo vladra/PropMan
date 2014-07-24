@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   # remember to add a filter here !!!!!!!!!!!!!!!!!!!
-#
   def create
     @issue = Issue.find(params[:issue_id])
     @comment = @issue.comments.build(comment_params)
