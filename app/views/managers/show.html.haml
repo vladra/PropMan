@@ -7,39 +7,51 @@
 / list the issues according to the category
 / if clicked specific category, show should page should show the list of all the issues with that category
 / show on the front page todays complains
-/ show categories on the front page with new complains
+/ show categories on the front page with new complains --- " Issues for the day"
+%div{class: "panel-body"}
+	%div{class: 'profile-name'}
+	%b #{@manager.first_name} #{@manager.last_name}
+	%br
+	= @manager.buildings.count
+	%b Building
+	%br
+	- @manager.buildings.each do |building|
+		= building.tenants.count
+		%b Tenants
 
 
-%b Welcome #{@manager.first_name} #{@manager.last_name}
-%br
-%b You have total :
-= @manager.buildings.count
-%b Buildings
-%br
-%b Your Buildings have total :
-= @manager.issues.count
-%b Issues
-%br
-%b Comments :
-= @manager.comments.count
-%br
-%br
 
-- @manager.buildings.each do |building|
-	%b Street :
-	= building.street
-	%br
-	%b Postal Code :
-	= building.postal_code
-	%br
-	%b City :
-	= building.city
-	%br
-	%b Total number of Tenants :
-	= building.tenants.count
-	%br
-	= link_to "Total Issues :", building_path
-	= building.issues.count
-	%hr
+
+
+/ %br
+/ %b You have total :
+/ = @manager.buildings.count
+/ %b Buildings
+/ %br
+/ %b Your Buildings have total :
+/ = @manager.issues.count
+/ %b Issues
+/ %br
+/ %b Comments :
+/ = @manager.comments.count
+/ %br
+/ %br
+
+/ - @manager.buildings.each do |building|
+/ 	%b Street :
+/ 	= building.street
+/ 	%br
+/ 	%b Postal Code :
+/ 	= building.postal_code
+/ 	%br
+/ 	%b City :
+/ 	= building.city
+/ 	%br
+/ 	%b Total number of Tenants :
+/ 	= building.tenants.count
+/ 	%br
+/ 	= link_to "Total Issues :", building_path
+/ 	= building.issues.count
+/ 	%hr
 
 
