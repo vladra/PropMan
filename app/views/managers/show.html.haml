@@ -1,3 +1,70 @@
+.content-wrapper
+  .row
+    / Start .row
+    / Start .page-header
+    .col-lg-12.heading
+      %h1.page-header
+        %i.ec-user
+        Profile
+  .outlet
+    .row
+      .col-lg-6.col-md-6.col-sm-6.col-xs-12
+        / col-lg-4 start here
+        #spr_0.panel.panel-default.plain.profile-widget
+          / Start .panel
+          .panel-heading.white-bg.pl0.pr0
+            %img.profile-image.img-responsive{alt: "profile cover", src: "assets/img/profile-cover.jpg"}/
+          .panel-body
+            .col-lg-4.col-md-4.col-sm-12
+              .profile-avatar
+                %img.img-responsive{alt: "@roybarberuk", src: "assets/img/avatars/132.jpg"}/
+            .col-lg-8.col-md-8.col-sm-12
+              .profile-name
+                SuggeElson
+                %span.label.label-success admin
+              .profile-quote
+                %p Building new app with yeoman generator plus grunt and bower, it`s awesome
+        / End .panel
+      / col-lg-4 end here
+      .col-lg-6.col-md-6.col-sm-6.col-xs-12
+        / col-lg-4 start here
+        #spr_1.panel.panel-default.plain
+          / Start .panel
+          .panel-heading.white-bg
+            %h4.panel-title
+              %i.ec-user
+              Update info
+          .panel-body
+            %form.form-vertical.hover-stripped{role: "form"}
+              .form-group
+                %label.control-label Username
+                %input.form-control{type: "text", value: "SuggeElson"}/
+                / %a.help-block.color-red{href: "#"} Request new ?
+              .form-group
+                %label.control-label Full name
+                %input.form-control{type: "text", value: "Jonh Doe"}/
+              .form-group
+                %label.control-label Email
+                %input.form-control{type: "email", value: "suggeelson@suggeelson.com"}/
+              .form-group
+                %label.control-label New password
+                %input.form-control{type: "password"}/
+              .form-group
+                %label.control-label Repeat password
+                %input.form-control{type: "password"}/
+              .form-group
+                %label.control-label More info
+                %textarea.form-control{rows: "3"}
+              / End .form-group
+              .form-group.mb15
+                %button.btn.btn-primary Change
+
+
+
+
+
+
+
 
 / things need to be added :
 / list all the categories and count the number of issues in that category
@@ -8,20 +75,23 @@
 / if clicked specific category, show should page should show the list of all the issues with that category
 / show on the front page todays complains
 / show categories on the front page with new complains --- " Issues for the day"
-%div{class: "panel-body"}
-	%div{class: 'profile-name'}
-	%b #{@manager.first_name} #{@manager.last_name}
-	%br
-	= @manager.buildings.count
-	%b Building
-	%br
-	- @manager.buildings.each do |building|
-		= building.tenants.count
-		%b Tenants
+/ 									%b #{@manager.first_name} #{@manager.last_name}
+/ 									%br
+/ 									%div{class:"profile-quote"}
+/ 									%b Property Manager
+/ 									%li{class:"ec-mobile"}
+/ 									= @manager.phone_number
 
 
 
 
+
+/ = @manager.buildings.count
+/ %b Building
+/ %br
+/ - @manager.buildings.each do |building|
+/ = building.tenants.count
+/ %b Tenants
 
 / %br
 / %b You have total :
@@ -53,5 +123,10 @@
 / 	= link_to "Total Issues :", building_path
 / 	= building.issues.count
 / 	%hr
+
+
+
+
+
 
 
