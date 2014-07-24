@@ -1,0 +1,26 @@
+%b Total Buildings :
+= @manager.buildings.count
+%br
+%b Total Issues :
+= @manager.issues.count
+%br
+%br
+%br
+
+- @manager.buildings.each do |building|
+	%b Street :
+	= building.street
+	%br
+	%b Postal Code :
+	= building.postal_code
+	%br
+	%b City :
+	= building.city
+	%br
+	%b Total number of Tenants :
+	= building.tenants.count
+	%br
+	= link_to "Total Issues :", building_path
+	= building.issues.count
+	%hr
+
