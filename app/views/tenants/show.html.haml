@@ -1,3 +1,5 @@
+= render 'sidebar'
+
 .row
 	%div{class: 'col-lg-12 heading'}
 		%h1.page-header
@@ -66,7 +68,7 @@
 				.tile-stats-icon
 					%i{class: 'ec-clock color-teal'}
 				.tile-stats-content
-					.tile-stats-number 2
+					.tile-stats-number #{@tenant.avg_issue_time} days
 					.tile-stats-text Average response time
 				.clearfix
 	/ %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
@@ -88,17 +90,6 @@
 				= link_to issue, class: 'list-group-item' do
 					%h4.list-group-item-heading
 						= issue.title
-						%small.s12 (8 days)
+						%small.s12= issue_duration(issue)
 					= show_issue_status(issue)
 					%p.list-group-item-text= issue.message
-
-
-
-
-
-
-
-
-
-
-

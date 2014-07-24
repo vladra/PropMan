@@ -1,0 +1,21 @@
+- content_for :sidebar do
+
+	%li
+		= link_to current_tenant do
+			Me
+			%i.ec-user
+
+	%li
+		= link_to current_tenant do
+			Edit my profile
+			%i.ec-cog
+
+	%li
+		= link_to current_tenant do
+			Change building
+			%i.ec-contract
+
+	%li
+		= link_to current_tenant do
+			My issues
+			%i.ec-list
