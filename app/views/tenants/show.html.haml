@@ -1,2 +1,104 @@
-%div
-	%h1= @tenant.full_name
+.row
+	%div{class: 'col-lg-12 heading'}
+		%h1.page-header
+			%i.ec-user
+			Profile
+
+.row
+	%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+		%div{class: 'panel panel-default plain profile-widget'}
+
+			%div{class: 'panel-heading white-bg pl0 pr0'}
+
+			.panel-body
+				%h3= @tenant.full_name
+
+			.panel-body
+				%ul.profile-info
+					%li
+						%i.ec-mail
+						= @tenant.email
+					%li
+						%i.ec-mobile
+						= @tenant.phone_number
+
+			%div{class: 'panel-footer white-bg'}
+				%ul.profile-info
+					%li
+						%i.ec-location
+						#{@tenant.apartment}, #{@tenant.building.street}
+					%li
+						%i.ec-earth
+						#{@tenant.building.postal_code}, #{@tenant.building.city}, #{@tenant.building.country}
+
+	%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+		%div{class: 'panel panel-default plain'}
+
+			%div{class: 'panel-heading white-bg'}
+				%h4.panel-title
+					%i.ec-pencil2
+					Create new issue
+
+			.panel-body{class: 'pt0'}
+				= form_for @tenant.issues.new, html: {role: 'form', class: 'form-vertical hover-stripped'} do |f|
+					.form-group
+						= f.label :title, class: 'control-label'
+						= f.text_field :title, class: 'form-control'
+					.form-group
+						= f.label :message, class: 'control-label'
+						= f.text_area :message, class: 'form-control', rows: 5
+					.form-group{class: 'mb5'}
+						= f.submit "Create issue", class: 'btn btn-primary'
+
+.row
+	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+		%div{class: 'tile-stats b brall mb25'}
+			= link_to '' do
+				.tile-stats-icon
+					%i{class: 'ec-info color-red'}
+				.tile-stats-content
+					.tile-stats-number= @tenant.num_of_pending_issues
+					.tile-stats-text Pending issues
+				.clearfix
+	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+		%div{class: 'tile-stats b brall mb25'}
+			= link_to '' do
+				.tile-stats-icon
+					%i{class: 'ec-clock color-teal'}
+				.tile-stats-content
+					.tile-stats-number 2
+					.tile-stats-text Average response time
+				.clearfix
+	/ %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+	/ 	%div{class: 'tile-stats b brall mb25'}
+	/ 		= link_to '' do
+	/ 			.tile-stats-icon
+	/ 				%i.ec
+	/ 			.tile-stats-content
+	/ 				.tile-stats-number
+	/ 				.tile-stats-text
+	/ 			.clearfix
+
+.row
+	.col-lg-3
+		.page-header
+			%h5 Recent issues
+		.list-group
+			- @tenant.recent_issues.each do |issue|
+				= link_to issue, class: 'list-group-item' do
+					%h4.list-group-item-heading
+						= issue.title
+						%small.s12 (8 days)
+					= show_issue_status(issue)
+					%p.list-group-item-text= issue.message
+
+
+
+
+
+
+
+
+
+
+

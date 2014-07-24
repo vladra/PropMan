@@ -10,4 +10,12 @@ class Tenant < ActiveRecord::Base
 	def full_name
 		"#{first_name} #{last_name}"
 	end
+
+	def recent_issues
+		issues.order('created_at desc').limit(5)
+	end
+
+	def num_of_pending_issues
+		issues.where.not(status: 'done').count
+	end
 end
