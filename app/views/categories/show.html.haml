@@ -1,2 +1,41 @@
-%h1 Category Name :
+%b Category Name :
 = @category.name
+%br
+%br
+%b Total Issues in this Category :
+= @category.issues.count
+%br
+%br
+%b Done Issues :
+= @category.no_of_done_issues
+%br
+%b New Issues :
+= @category.no_of_new_issues
+%br
+%b Average time for the compleetion of an Issue :
+= @category.avg_time_for_completion
+%b Days
+%br
+%b Average rating of a Service by Tenant :
+= @category.avg_rating
+%br
+%hr
+- @category.issues.each do |issue|
+	%b Message :
+	= issue.message
+	%br
+	%b Tenant :
+	= issue.tenant.first_name
+	%br
+	%b Apartment :
+	= issue.tenant.apartment
+	%br
+	%b Complete Date :
+	= issue.complete_date
+	%br
+	%b Status :
+	= issue.status
+	%br
+	%b Rating :
+	= issue.rating
+	%hr

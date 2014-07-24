@@ -1,27 +1,21 @@
-/ %b Manager
-/ = @building.manager.first_name
-/ %br
-/ %b Building Address:
-/ %br
-/ %b Street:
-/ = @building.street
-/ %br
-/ %b Postal Code
-/ = @building.postal_code
-/ %br
-/ %b City
-/ = @building.city
-/ %br
-/ %b Country
-/ = @building.country
-/ %br
-/ %br
 = link_to "Total tenants in the Building:"
 = @building.tenants.count
 %br
 %b Total issues in the Building:
 = @building.issues.count
 %br
+%b Done Issues :
+= @building.no_of_done_issues
+%br
+%b New Issues :
+= @building.no_of_new_issues
+%br
+%b Average time for the compleetion of an Issue :
+= @building.avg_time_for_completion
+%br
+%b Average rating of a Service by Tenant :
+= @building.avg_rating
+%b Days
 %hr
 - @building.issues.each do |issue|
 	= link_to "Title :", issue_path
@@ -46,35 +40,6 @@
 	%b Rating :
 	= issue.rating
 	%hr
-
-/ = @building.no_of_done_issues
-
-/ = @building.avg_time_for_complain
-
-
-/ ** count how many issues are new and have been completed?
-/ ** check how much time did it take for the issues to complete
-/ ** average ratings
-/ ** ask if you can show only an apartment number once and tenants living in that apartment number
-
-/ - @building.tenants.each do |tenant|
-/ 	%b Name:
-/ 	= link_to tenant.first_name
-/ 	= link_to tenant.last_name
-/ 	%br
-/ 	%b Email:
-/ 	= tenant.email
-/ 	%br
-/ 	%b Phone Number:
-/ 	= tenant.phone_number
-/ 	%br
-/ 	%b Apartment:
-/ 	= tenant.apartment
-/ 	%br
-/ 	= link_to "Total no of Issues:" , issue_path
-/ 	= tenant.issues.count
-/ 	%br
-/ 	%hr
 
 
 
