@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   devise_for :manager
   devise_for :tenant
 
-  resource :tenant, only: [:show, :edit, :update] do
-  	get 'edit', on: :collection
+  resource :tenant, only: [:show] do
+  	resources :issues, only: [:index]
   end
   # resource :manager, only: [:show] do
   # 	resources :buildings, on: :collection
