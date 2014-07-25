@@ -1,3 +1,24 @@
+/ %li
+/   = link_to do
+/     Me
+/     %i.ec-user
+
+/ %li
+/   = link_to do
+/     Edit my profile
+/     %i.ec-cog
+
+/ %li
+/   = link_to do
+/     Change building
+/     %i.ec-contract
+
+/ %li
+/   = link_to do
+/     My issues
+/     %i.ec-list
+
+= render 'sidebar'
 .row
   / Start .row
   / Start .page-header
@@ -16,182 +37,96 @@
         Dashboard
         .row
   / Start .row
-  .row
-  / Start .row
-  .col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .carousel-tile.carousel.vertical.slide
-      .carousel-inner
-        .item.active
-          .tile.red
-            .tile-content
-              = @manager.issues.count
-              %b Total Issues
-  .col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .carousel-tile.carousel.slide
-      .carousel-inner
-        .item.next.left
-          .tile.blue
-            .tile-content
-              = @manager.comments.count
-              %b Total Comments
-        .item.active.left
-          .tile.brown
-            .tile-content
-    / End Carousel
-  .col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .carousel-tile.carousel.vertical.slide
-      .carousel-inner
-        .item.active
-          .tile.green
-            .tile-content
-              = @manager.no_of_new_issues
-              %b New issues
-
-  .col-lg-3.col-md-3.col-sm-6.col-xs-12
-    .carousel-tile.carousel.slide
-      .carousel-inner
-        .item.next.left
-          .tile.teal
-            / tile start here
-            / .tile-icon
-            /   %i.ec-images.s64
-            .tile-content
-              %b Completion time:
-              = @manager.avg_time_for_completion
-              %b Days
-        .item.active.left
-          .tile.magenta
-            / tile start here
-            .tile-icon
-              %i.ec-share.s64
-            .tile-content
-              = @manager.avg_time_for_completion
-              %h3 New images
-    / End Carousel
-    / End Carousel
+  / st-settings
+.row
+  %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+    %div{class: 'tile-stats b brall mb25'}
+      = link_to '' do
+        .tile-stats-icon
+          %i{class: 'im-alarm2 color-red'}
+        .tile-stats-content
+          .tile-stats-number= @manager.no_of_new_issues
+          .tile-stats-text New Issues
+        .clearfix
+  %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+    %div{class: 'tile-stats b brall mb25'}
+      = link_to '' do
+        .tile-stats-icon
+          %i{class: 'ec-info color-red'}
+        .tile-stats-content
+          .tile-stats-number #{@manager.avg_time_for_completion} days
+          .tile-stats-text Average Rsponse Time
+        .clearfix
+  %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+    %div{class: 'tile-stats b brall mb25'}
+      = link_to '' do
+        .tile-stats-icon
+          %i{class: 'ec-clock color-teal'}
+        .tile-stats-content
+          .tile-stats-number=@manager.avg_rating
+          .tile-stats-text Average Rating
+        .clearfix
 
 
-
-/ things need to be added :
-/ list all the categories and count the number of issues in that category
-/ calculate the average complettion time of an issue
-/ show which category had most of the issues
-/ Calculate the overall rating of the building
-/ list the issues according to the category
-/ if clicked specific category, show should page should show the list of all the issues with that category
-/ show on the front page todays complains
-/ show categories on the front page with new complains --- " Issues for the day"
-/ 									%b #{@manager.first_name} #{@manager.last_name}
-/ 									%br
-/ 									%div{class:"profile-quote"}
-/ 									%b Property Manager
-/ 									%li{class:"ec-mobile"}
-/ 									= @manager.phone_number
+  / %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+  /   %div{class: 'tile-stats b brall mb25'}
+  /     = link_to '' do
+  /       .tile-stats-icon
+  /         %i{class: 'ec-clock color-teal'}
+  /       .tile-stats-content
+  /         .tile-stats-number=@manager.avg_rating
+  /         .tile-stats-text Average Rating
+  /       .clearfix
 
 
+  / .row
+  / / Start .row
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.vertical.slide
+  /     .carousel-inner
+  /       .item.active
+  /         .tile.red
+  /           .tile-content
+  /             = @manager.issues.count
+  /             %b Total Issues
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.slide
+  /     .carousel-inner
+  /       .item.next.left
+  /         .tile.blue
+  /           .tile-content
+  /             = @manager.comments.count
+  /             %b Total Comments
+  /       .item.active.left
+  /         .tile.brown
+  /           .tile-content
+  /   / End Carousel
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.vertical.slide
+  /     .carousel-inner
+  /       .item.active
+  /         .tile.green
+  /           .tile-content
+  /             = @manager.no_of_new_issues
+  /             %b New issues
 
-
-
-/ = @manager.buildings.count
-/ %b Building
-/ %br
-/ - @manager.buildings.each do |building|
-/ = building.tenants.count
-/ %b Tenants
-
-/ %br
-/ %b You have total :
-/ = @manager.buildings.count
-/ %b Buildings
-/ %br
-/ %b Your Buildings have total :
-/ = @manager.issues.count
-/ %b Issues
-/ %br
-/ %b Comments :
-/ = @manager.comments.count
-/ %br
-/ %br
-
-/ - @manager.buildings.each do |building|
-/ 	%b Street :
-/ 	= building.street
-/ 	%br
-/ 	%b Postal Code :
-/ 	= building.postal_code
-/ 	%br
-/ 	%b City :
-/ 	= building.city
-/ 	%br
-/ 	%b Total number of Tenants :
-/ 	= building.tenants.count
-/ 	%br
-/ 	= link_to "Total Issues :", building_path
-/ 	= building.issues.count
-/ 	%hr
-
-
-/ .content-wrapper
-/   .row
-/     / Start .row
-/     / Start .page-header
-/     .col-lg-12.heading
-/       %h1.page-header
-/         %i.ec-user
-/         Profile
-/   .outlet
-/     .row
-/       .col-lg-6.col-md-6.col-sm-6.col-xs-12
-/         / col-lg-4 start here
-/         #spr_0.panel.panel-default.plain.profile-widget
-/           / Start .panel
-/           .panel-heading.white-bg.pl0.pr0
-/             %img.profile-image.img-responsive{alt: "profile cover", src: "assets/img/profile-cover.jpg"}/
-/           .panel-body
-/             .col-lg-4.col-md-4.col-sm-12
-/               .profile-avatar
-/                 %img.img-responsive{alt: "@roybarberuk", src: "assets/img/avatars/132.jpg"}/
-/             .col-lg-8.col-md-8.col-sm-12
-/               .profile-name
-/                 SuggeElson
-/                 %span.label.label-success admin
-/               .profile-quote
-/                 %p Building new app with yeoman generator plus grunt and bower, it`s awesome
-/         / End .panel
-/       / col-lg-4 end here
-/       .col-lg-6.col-md-6.col-sm-6.col-xs-12
-/         / col-lg-4 start here
-/         #spr_1.panel.panel-default.plain
-/           / Start .panel
-/           .panel-heading.white-bg
-/             %h4.panel-title
-/               %i.ec-user
-/               Update info
-/           .panel-body
-/             %form.form-vertical.hover-stripped{role: "form"}
-/               .form-group
-/                 %label.control-label Username
-/                 %input.form-control{type: "text", value: "SuggeElson"}/
-/                 / %a.help-block.color-red{href: "#"} Request new ?
-/               .form-group
-/                 %label.control-label Full name
-/                 %input.form-control{type: "text", value: "Jonh Doe"}/
-/               .form-group
-/                 %label.control-label Email
-/                 %input.form-control{type: "email", value: "suggeelson@suggeelson.com"}/
-/               .form-group
-/                 %label.control-label New password
-/                 %input.form-control{type: "password"}/
-/               .form-group
-/                 %label.control-label Repeat password
-/                 %input.form-control{type: "password"}/
-/               .form-group
-/                 %label.control-label More info
-/                 %textarea.form-control{rows: "3"}
-/               / End .form-group
-/               .form-group.mb15
-/                 %button.btn.btn-primary Change
-
-
-
-
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.slide
+  /     .carousel-inner
+  /       .item.next.left
+  /         .tile.teal
+  /           / tile start here
+  /           / .tile-icon
+  /           /   %i.ec-images.s64
+  /           .tile-content
+  /             %b Completion time:
+  /             = @manager.avg_time_for_completion
+  /             %b Days
+  /       .item.active.left
+  /         .tile.magenta
+  /           / tile start here
+  /           .tile-icon
+  /             %i.ec-share.s64
+  /           .tile-content
+  /             = @manager.avg_time_for_completion
+  /             %h3 New images
