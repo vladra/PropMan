@@ -14,7 +14,7 @@
 			%div{class: 'panel-heading white-bg pl0 pr0'}
 
 			.panel-body
-				%h3= @tenant.full_name == ' ' ? "Please, add your name in settings" : @tenant.full_name
+				%h3.text-center= @tenant.full_name == ' ' ? "Please, add your name in settings" : @tenant.full_name
 
 			.panel-body
 				%ul.profile-info
@@ -29,8 +29,8 @@
 				%ul.profile-info
 					%li
 						%i.ec-location
+						#{@tenant.building.try(:street) || "no building assigned to you"},
 						= @tenant.apartment
-						= @tenant.building.try(:street) || "no building assigned to you"
 					%li
 						%i.ec-earth
 						- if @tenant.building
@@ -76,15 +76,15 @@
 					.tile-stats-number #{@tenant.avg_issue_time} days
 					.tile-stats-text Average response time
 				.clearfix
-	/ %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
-	/ 	%div{class: 'tile-stats b brall mb25'}
-	/ 		= link_to '' do
-	/ 			.tile-stats-icon
-	/ 				%i.ec
-	/ 			.tile-stats-content
-	/ 				.tile-stats-number
-	/ 				.tile-stats-text
-	/ 			.clearfix
+	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+		%div{class: 'tile-stats b brall mb25'}
+			= link_to '' do
+				.tile-stats-icon
+					%i{class: 'ec-heart color-pink'}
+				.tile-stats-content
+					.tile-stats-number WTF
+					.tile-stats-text Some aditional shit
+				.clearfix
 
 .row
 	.col-lg-3
