@@ -6,13 +6,56 @@
 		= javascript_include_tag 'application'
 		= csrf_meta_tags
 
-	%body{class: "login-page  pace-done"}
+	%body{class: "login-page"}
 
-		%div{class: "pace  pace-inactive"}
-			%div.pace-progress(data-progress-text="100%" data-progress="99" style="width: 100%;")
-				%div.pace-progress-inner
-			%div.pace-activity
-
-		#login{class: "animated bounceIn"}
+		%div{id: "login", class: "animated bounceIn"}
 			.login-wrapper
-				= yield
+				%ul#myTab{class: "nav nav-tabs nav-justified bn"}
+					%li.active= link_to "Login", "#log-in", data: {toggle: "tab"}
+					%li= link_to "Register", "#register", data: {toggle: "tab"}
+
+				#myTabContent{class: "tab-content bn"}
+
+					#log-in{class: "tab-pane fade active in"}
+						%div{class: "social-buttons text-center mt10"}
+							%h4 #{resource_name.capitalize} Login
+						.separator
+							%hr
+						= form_for(resource, as: resource_name, url: session_path(resource_name), html: {role: 'form', class: 'form-horizontal mt10', id: 'login-form', novalidate: "novalidate"}) do |f|
+							.form-group
+								.col-lg-12
+									= f.text_field :email, autofocus: true, class: "form-control left-icon", placeholder: "Your email ..."
+									%i{class: "ec-user s16 left-input-icon"}
+							.form-group
+								.col-lg-12
+									= f.password_field :password, class: "form-control left-icon", placeholder: "Your password"
+									%i{class: "ec-locked s16 left-input-icon"}
+									%span.help-block
+										= link_to new_password_path(resource_name) do
+											%small Forgot password ?
+							.form-group
+								%div{class: "col-lg-6 col-md-6 col-sm-6 col-xs-8"}
+									%label.checkbox{for: "remember_me"}
+										= f.check_box :remember_me
+										Remember me?
+
+								%div{class: "col-lg-6 col-md-6 col-sm-6 col-xs-4"}
+									= f.submit "Sign in", class: "btn btn-success pull-right	"
+
+					#register{class: "tab-pane fade"}
+						= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {role: 'form', class: 'form-horizontal mt20', id: 'register-form'}) do |f|
+							.form-group
+								.col-lg-12
+									= f.text_field :email, autofocus: true, class: "form-control left-icon", placeholder: "Type your email"
+									%i{class: "ec-mail s16 left-input-icon"}
+							.form-group
+								.col-lg-12
+									= f.password_field :password, class: "form-control left-icon", placeholder: "Enter your password"
+									%i{class: "ec-locked s16 left-input-icon"}
+							.form-group
+								.col-lg-12
+									= f.password_field :password_confirmation, class: "form-control left-icon", placeholder: "Repeat password"
+									%i{class: "ec-locked s16 left-input-icon"}
+							.form-group
+								.col-lg-12
+									= f.submit "Register", class: "btn btn-success btn-block"
