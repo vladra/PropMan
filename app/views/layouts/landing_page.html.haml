@@ -8,5 +8,98 @@
 
 	%body
 
-		%h1 INDEX PAGE
-		= yield
+		#top.landing-intro{role: 'main'}
+			.container
+				%header{class: 'header row'}
+					%div{class: 'col-md-6 col-sm-12 text-center'}
+						.logo
+							= link_to root_path do
+								/ = image_tag
+								%p{class: 'slogan hidden-sm hidden-xs'}
+									Property Managment
+									%br Easy and Sexy
+					%div{class: 'col-md-6 col-sm-12'}
+						%nav
+							%ul
+								%li= link_to 'Sign up / Login', new_tenant_session_path, class: 'btn btn-white btn-alt'
+
+				%div{class: 'intro-slogan text-center animated fadeInDown'}
+					%h1
+						Make your property management
+						%strong easy!
+					%p
+						Great
+						%strong Property Management App
+						Designed for Simplicity
+						%br.hidden-xs Very Sexy. User Friendly.
+						%strong Very Powerful.
+					= image_tag 'profile.png', class: 'img-responsive center-block center-block'
+
+			.description-bar
+				%div{class: 'container text-center'}
+					%p Perfect Solution for Tenants, Property Managers and Landlords
+			= link_to '#build-with-love', class: 'scrollTo' do
+				%p.sroll-down
+					= image_tag 'scroll_down.png'
+
+		#features.section-features
+			%section{id: 'build-with-love clean-code', class: 'clean-code features-row'}
+				.container
+					.row
+						%div{class: 'col-md-8 col-sm-8'}
+							= image_tag 'profile_2.png', class: 'img-responsive center-block'
+						%div{class: 'col-md-4 col-sm-4'}
+							%h3.section-header Easy to Use
+							%p Grow your business faster.
+							%p Get More Done Every Day.
+							%p Web-based property management software built for the modern manager.
+
+		#testimonials{class: 'testimonials gray-bg'}
+			.container
+				.text-center
+					%h3.section-header-1 What our customers said
+				.row
+					.col-md-6
+						.testimonials-block
+							.testimonials-text I'm sexy and I know it
+							.testimonials-client
+								= image_tag 'hassan.png'
+								%p
+									%strong Hassan Jalil
+									%br Ping-Pong Jedai
+					.col-md-6
+						.testimonials-block
+							.testimonials-text WTF?
+							.testimonials-client
+								= image_tag 'vlad.png'
+								%p
+									%strong Vladimir Dralo
+									%br Ping-Pong Padawan
+					%div{class: 'col-md-12 pt25 pb25 mt25'}
+						= link_to '#give-a-try', class: 'scrollTo' do
+							%p.sroll-down
+								= image_tag 'scroll_down.png'
+
+		#give-a-try.give-a-try
+			.container
+				%div{class: 'text-center color-red'}
+					%h1 Have You Seen Enough?
+					%p
+						Give it a
+						%strong try.
+						It’s time to get your property management
+						%strong done
+				%div{class: 'row mt50 mb50'}
+					%div{class: 'col-md-12 text-center'}
+						= link_to 'Register', new_tenant_session_path, class: 'btn btn-lg btn-danger uppercase'
+
+		%footer#footer
+			.container
+				%div{class: 'row mt50 mb50'}
+					%div{class: 'col-md-12 footer-links'}
+						= link_to 'Sign up', new_tenant_session_path, class: 'goTo'
+						= link_to 'Register', new_tenant_session_path, class: 'goTo'
+						= link_to 'Sign up', new_tenant_session_path, class: 'goTo'
+						= link_to 'Register', new_tenant_session_path, class: 'goTo'
+						= link_to 'Back to Top', '#top', class: 'back-to-top'
+						%p &copy; 2014 Hassan & Vladimir. All Rights are Sexy
