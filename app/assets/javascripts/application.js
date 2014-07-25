@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require 'pace.js'
+//= require 'bootstrap.js'
 //= require_tree .
