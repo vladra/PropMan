@@ -14,7 +14,7 @@
 			%div{class: 'panel-heading white-bg pl0 pr0'}
 
 			.panel-body
-				%h3= @tenant.full_name.nil? ? @tenant.full_name : "Please, add your name in settings"
+				%h3= @tenant.full_name == ' ' ? "Please, add your name in settings" : @tenant.full_name
 
 			.panel-body
 				%ul.profile-info
