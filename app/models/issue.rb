@@ -3,6 +3,8 @@ class Issue < ActiveRecord::Base
 	belongs_to :tenant
 	has_and_belongs_to_many :categories
 
+	statuses = [:done]
+
 	def duration
 		if complete_date.nil?
 			(Time.now - created_at).floor
