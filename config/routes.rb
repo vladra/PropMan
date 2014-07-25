@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get "/tenant/settings", to: 'tenants#settings'
   put "/tenant/settings", to: 'tenants#update_settings'
+  get "/tenant/building", to: 'tenants#change_building'
+  put "/tenant/building", to: 'tenants#update_building'
   resource :tenant, only: [:show] do
     resources :issues, only: [:index]
   end
