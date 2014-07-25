@@ -15,6 +15,8 @@
 //= require pace
 //= require bootstrap
 //= require select2.min
+//= require waypoints.min
+//= require landing
 //= require_self
 //= require_tree .
 

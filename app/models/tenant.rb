@@ -26,7 +26,7 @@ class Tenant < ActiveRecord::Base
 	def avg_issue_time
 		d = completed_issues
 		if d.any?
-			d.pluck(:complete_date, :created_at).reduce(0) {|t, i| t+= (i.complete_date - i.created_at)} / d.count / 60 / 60 / 24
+			(d.reduce(0) {|t, i| t+= (i.complete_date - i.created_at)} / d.count / 60 / 60 / 24).floor
 		else
 			'--'
 		end
