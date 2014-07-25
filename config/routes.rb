@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root "static#index"
+
   devise_for :manager
   devise_for :tenant
 
