@@ -1,14 +1,14 @@
 .container-fluid
 	.navbar
 		.navbar-header
-			= link_to current_tenant, class: 'navbar-brand' do
+			= link_to root_path, class: 'navbar-brand' do
 				%i{class: "ec-bookmark text-logo-element animated bounceIn"}
 				%span.text-logo Prop
 				%span.text-slogan Man
 
 		%nav.top-nav{role: 'navigation'}
 			%ul{class: 'nav navbar-nav pull-right'}
-				%li= link_to "Logout"
+				= yield :navbar
 
 	#header-area.fadeInDown
 		.header-area-inner

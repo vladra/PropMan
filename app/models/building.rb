@@ -22,4 +22,8 @@ class Building < ActiveRecord::Base
 		('%.2f' % issues.average(:rating).to_f).to_f
 	end
 
+	def vals_for_select
+		"#{street}, #{city}, #{country}"
+	end
+
 end

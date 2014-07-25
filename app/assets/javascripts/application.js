@@ -12,4 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require pace
+//= require bootstrap
+//= require select2.min
+//= require_self
 //= require_tree .
+
+$( document ).ready(function() {
+	$('.select2').select2();
+});

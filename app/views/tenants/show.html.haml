@@ -1,3 +1,4 @@
+= render 'navbar'
 = render 'sidebar'
 
 .row
@@ -13,7 +14,7 @@
 			%div{class: 'panel-heading white-bg pl0 pr0'}
 
 			.panel-body
-				%h3= @tenant.full_name
+				%h3= @tenant.full_name == ' ' ? "Please, add your name in settings" : @tenant.full_name
 
 			.panel-body
 				%ul.profile-info
@@ -22,16 +23,20 @@
 						= @tenant.email
 					%li
 						%i.ec-mobile
-						= @tenant.phone_number
+						= @tenant.phone_number || "you can add phone number in your settings"
 
 			%div{class: 'panel-footer white-bg'}
 				%ul.profile-info
 					%li
 						%i.ec-location
-						#{@tenant.apartment}, #{@tenant.building.street}
+						= @tenant.apartment
+						= @tenant.building.try(:street) || "no building assigned to you"
 					%li
 						%i.ec-earth
-						#{@tenant.building.postal_code}, #{@tenant.building.city}, #{@tenant.building.country}
+						- if @tenant.building
+							#{@tenant.building.postal_code}, #{@tenant.building.city}, #{@tenant.building.country}
+						- else
+							no building assigned to you
 
 	%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
 		%div{class: 'panel panel-default plain'}

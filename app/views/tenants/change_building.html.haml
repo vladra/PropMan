@@ -1,0 +1,29 @@
+= render 'navbar'
+= render 'sidebar'
+
+.row
+	%div{class: "col-lg-12 heading"}
+		%h1.page-header
+			%i.ec-refresh
+			Send building request
+
+.row
+	.col-lg-12
+		%div{class: "panel panel-default toggle"}
+			.panel-heading
+				%h3.panel-title
+
+			.panel-body
+				= form_for @tenant, url: tenant_building_path, method: :put, html: {class: "form-horizontal group-border hover-stripped", role: "form"} do |f|
+					.form-group
+						= f.label :building_id, class: "col-lg-2 col-md-2 col-sm-12 control-label"
+						%div{class: "col-lg-10 col-md-10"}
+							= collection_select(:tenant, :building_id, Building.all, :id, :vals_for_select, {prompt: 'Select building..'}, {class: 'form-control select2'})
+							%span.help-block You can select only one building
+					.form-group
+						= f.label :apartment, class: "col-lg-2 col-md-2 col-sm-12 control-label"
+						%div{class: "col-lg-10 col-md-10"}
+							= f.text_field :apartment, class: 'form-control', placeholder: 'Enter your apartment number'
+					.form-group
+						.col-lg-12{class: 'text-center'}
+							= f.submit 'Send request', class: 'btn btn-primary'
