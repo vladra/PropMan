@@ -1,4 +1,4 @@
-class Tenant::PasswordsController < Devise::PasswordsController
+class Tenants::PasswordsController < Devise::PasswordsController
 
 protected
 
