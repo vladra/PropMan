@@ -1,0 +1,18 @@
+!!!
+%html
+	%head
+		%title PropMan Sessions
+		= stylesheet_link_tag    'application', media: 'all'
+		= javascript_include_tag 'application'
+		= csrf_meta_tags
+
+	%body{class: "login-page  pace-done"}
+
+		%div{class: "pace  pace-inactive"}
+			%div.pace-progress(data-progress-text="100%" data-progress="99" style="width: 100%;")
+				%div.pace-progress-inner
+			%div.pace-activity
+
+		#login{class: "animated bounceIn"}
+			.login-wrapper
+				= yield
