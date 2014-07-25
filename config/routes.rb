@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   devise_for :manager
   devise_for :tenant
 
+  get "/tenant/settings", to: 'tenants#settings'
   resource :tenant, only: [:show] do
-  	resources :issues, only: [:index]
+    resources :issues, only: [:index]
   end
   # resource :manager, only: [:show] do
   # 	resources :buildings, on: :collection
