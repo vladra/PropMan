@@ -1,4 +1,4 @@
-class Tenant::SessionsController < Devise::SessionsController
+class Tenants::SessionsController < Devise::SessionsController
 
 protected
 

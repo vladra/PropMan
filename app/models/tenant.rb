@@ -33,3 +33,11 @@ class Tenant < ActiveRecord::Base
 	end
 
 end
+
+# See Manager model for more details on how this class.
+
+class Tenant::ParameterSanitizer < Devise::ParameterSanitizer
+  def account_update
+    default_params.permit(:first_name, :last_name, :phone_number)
+  end
+end

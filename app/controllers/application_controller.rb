@@ -11,4 +11,16 @@ class ApplicationController < ActionController::Base
 	# 	current_user.is_a? Manager
 	# end
 
+  protected
+
+	def devise_parameter_sanitizer
+    if resource_class == Tenant
+      Tenant::ParameterSanitizer.new(Tenant, :tenant, params)
+    elsif resource_class == Manager
+      Manager::ParameterSanitizer.new(Manager, :manager, params)
+    else
+      super # Use the default one
+    end
+  end
+
 end

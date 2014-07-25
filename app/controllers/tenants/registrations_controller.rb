@@ -1,4 +1,4 @@
-class Tenant::RegistrationsController < Devise::RegistrationsController
+class Tenants::RegistrationsController < Devise::RegistrationsController
 
 protected
 

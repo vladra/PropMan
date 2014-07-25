@@ -2,25 +2,35 @@ Rails.application.routes.draw do
 
   root "static#index"
 
-  devise_for :manager
-
-  devise_for :tenant, controllers: {
-    sessions: 'tenant/sessions',
-    registrations: 'tenant/registrations',
-    passwords: 'tenant/passwords'
+  devise_for :managers, controllers: {
+    sessions: 'managers/sessions',
+    registrations: 'managers/registrations',
+    passwords: 'managers/passwords'
   }
 
-  get "/tenant/settings", to: 'tenants#settings'
-  put "/tenant/settings", to: 'tenants#update_settings'
-  get "/tenant/building", to: 'tenants#change_building'
-  put "/tenant/building", to: 'tenants#update_building'
-  resource :tenant, only: [:show] do
+  get "/managers/settings", to: 'managers#settings'
+  put "/managers/settings", to: 'manager#update_settings'
+  get "/managers/building", to: 'manager#change_building'
+  put "/managers/building", to: 'manager#update_building'
+  resource :managers, only: [:show]
+
+  devise_for :tenants, controllers: {
+    sessions: 'tenants/sessions',
+    registrations: 'tenants/registrations',
+    passwords: 'tenants/passwords'
+  }
+
+  get "/tenants/settings", to: 'tenants#settings'
+  put "/tenants/settings", to: 'tenants#update_settings'
+  get "/tenants/building", to: 'tenants#change_building'
+  put "/tenants/building", to: 'tenants#update_building'
+  resource :tenants, only: [:show] do
     resources :issues, only: [:index]
   end
   # resource :manager, only: [:show] do
   # 	resources :buildings, on: :collection
   # end
-  resources :managers
+  # resources :managers
   resources :buildings
   resources :categories
   resources :issues do

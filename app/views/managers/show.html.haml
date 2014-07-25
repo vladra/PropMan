@@ -1,57 +1,132 @@
+/ %li
+/   = link_to do
+/     Me
+/     %i.ec-user
 
-/ things need to be added :
-/ list all the categories and count the number of issues in that category
-/ calculate the average complettion time of an issue
-/ show which category had most of the issues
-/ Calculate the overall rating of the building
-/ list the issues according to the category
-/ if clicked specific category, show should page should show the list of all the issues with that category
-/ show on the front page todays complains
-/ show categories on the front page with new complains --- " Issues for the day"
-%div{class: "panel-body"}
-	%div{class: 'profile-name'}
-	%b #{@manager.first_name} #{@manager.last_name}
-	%br
-	= @manager.buildings.count
-	%b Building
-	%br
-	- @manager.buildings.each do |building|
-		= building.tenants.count
-		%b Tenants
+/ %li
+/   = link_to do
+/     Edit my profile
+/     %i.ec-cog
+
+/ %li
+/   = link_to do
+/     Change building
+/     %i.ec-contract
+
+/ %li
+/   = link_to do
+/     My issues
+/     %i.ec-list
+= render 'navbar'
+= render 'sidebar'
+.row
+  / Start .row
+  / Start .page-header
+  .col-lg-12.heading
+    %h1.page-header
+      %i.im-screen
+      Dashboard
+    / Start .bredcrumb
+    %ul#crumb.breadcrumb
+      %li
+        %i.im-home
+        %a{href: "index.html"} Home
+        %i.en-arrow-right7
+      %li
+        %i.im-screen
+        Dashboard
+        .row
+  / Start .row
+  / st-settings
+.row
+  %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+    %div{class: 'tile-stats b brall mb25'}
+      = link_to '' do
+        .tile-stats-icon
+          %i{class: 'im-alarm2 color-red'}
+        .tile-stats-content
+          .tile-stats-number= @manager.no_of_new_issues
+          .tile-stats-text New Issues
+        .clearfix
+  %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+    %div{class: 'tile-stats b brall mb25'}
+      = link_to '' do
+        .tile-stats-icon
+          %i{class: 'ec-info color-red'}
+        .tile-stats-content
+          .tile-stats-number #{@manager.avg_time_for_completion} days
+          .tile-stats-text Average Rsponse Time
+        .clearfix
+  %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+    %div{class: 'tile-stats b brall mb25'}
+      = link_to '' do
+        .tile-stats-icon
+          %i{class: 'ec-clock color-teal'}
+        .tile-stats-content
+          .tile-stats-number=@manager.avg_rating
+          .tile-stats-text Average Rating
+        .clearfix
 
 
+  / %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+  /   %div{class: 'tile-stats b brall mb25'}
+  /     = link_to '' do
+  /       .tile-stats-icon
+  /         %i{class: 'ec-clock color-teal'}
+  /       .tile-stats-content
+  /         .tile-stats-number=@manager.avg_rating
+  /         .tile-stats-text Average Rating
+  /       .clearfix
 
 
+  / .row
+  / / Start .row
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.vertical.slide
+  /     .carousel-inner
+  /       .item.active
+  /         .tile.red
+  /           .tile-content
+  /             = @manager.issues.count
+  /             %b Total Issues
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.slide
+  /     .carousel-inner
+  /       .item.next.left
+  /         .tile.blue
+  /           .tile-content
+  /             = @manager.comments.count
+  /             %b Total Comments
+  /       .item.active.left
+  /         .tile.brown
+  /           .tile-content
+  /   / End Carousel
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.vertical.slide
+  /     .carousel-inner
+  /       .item.active
+  /         .tile.green
+  /           .tile-content
+  /             = @manager.no_of_new_issues
+  /             %b New issues
 
-/ %br
-/ %b You have total :
-/ = @manager.buildings.count
-/ %b Buildings
-/ %br
-/ %b Your Buildings have total :
-/ = @manager.issues.count
-/ %b Issues
-/ %br
-/ %b Comments :
-/ = @manager.comments.count
-/ %br
-/ %br
-
-/ - @manager.buildings.each do |building|
-/ 	%b Street :
-/ 	= building.street
-/ 	%br
-/ 	%b Postal Code :
-/ 	= building.postal_code
-/ 	%br
-/ 	%b City :
-/ 	= building.city
-/ 	%br
-/ 	%b Total number of Tenants :
-/ 	= building.tenants.count
-/ 	%br
-/ 	= link_to "Total Issues :", building_path
-/ 	= building.issues.count
-/ 	%hr
-
-
+  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
+  /   .carousel-tile.carousel.slide
+  /     .carousel-inner
+  /       .item.next.left
+  /         .tile.teal
+  /           / tile start here
+  /           / .tile-icon
+  /           /   %i.ec-images.s64
+  /           .tile-content
+  /             %b Completion time:
+  /             = @manager.avg_time_for_completion
+  /             %b Days
+  /       .item.active.left
+  /         .tile.magenta
+  /           / tile start here
+  /           .tile-icon
+  /             %i.ec-share.s64
+  /           .tile-content
+  /             = @manager.avg_time_for_completion
+  /             %h3 New images
