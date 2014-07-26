@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/managers/building", to: 'manager#change_building'
   put "/managers/building", to: 'manager#update_building'
   resource :managers, only: [:show] do
-    resources :buildings, only: [:index]
+    resources :buildings
   end
 
   devise_for :tenants, controllers: {
@@ -29,12 +29,7 @@ Rails.application.routes.draw do
   resource :tenants, only: [:show] do
     resources :issues, only: [:index]
   end
-  # resource :manager, only: [:show] do
-  # 	resources :buildings, on: :collection
-  # end
-  # resources :managers
-  resources :buildings
-  resources :categories
+
   resources :issues do
     resources :comments
   end

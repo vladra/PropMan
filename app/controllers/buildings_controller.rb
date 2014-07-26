@@ -15,7 +15,7 @@ class BuildingsController < ApplicationController
     if current_manager
       @building = Building.new(building_params)
       if @building.save
-        redirect_to @building, :notice => "Building has been created"
+        redirect_to managers_buildings_path, :notice => "Building has been created"
       else
         render :new
       end
@@ -24,7 +24,7 @@ class BuildingsController < ApplicationController
 
   def edit
     if current_manager
-     @building = Building.find(params[:id])
+      @building = Building.find(params[:id])
     end
   end
 
@@ -37,7 +37,8 @@ class BuildingsController < ApplicationController
   end
 
   def show
-    # @building = current_manager.building
+    @building = current_manager.building
+    @tenants = @building.tenants
     @building = Building.find(params[:id])
   end
 

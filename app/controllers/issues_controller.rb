@@ -1,7 +1,8 @@
 class IssuesController < ApplicationController
 
   def index
-  	@issues = Issue.all
+  	# @issues = Issue.all
+    @issues = current_manager.issues.order('created_at desc')
   end
 
   def new
