@@ -1,10 +1,12 @@
 class Issue < ActiveRecord::Base
 	has_many :comments
 	belongs_to :tenant
-	has_and_belongs_to_many :categories
+	belongs_to :category
 
 	before_validation :set_status_new, on: [:create]
 	before_validation :check_if_done, on: [:update]
+
+	validates :category, presence: true
 
 	def set_status_new
 		self.status = :new
