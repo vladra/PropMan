@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :authenticate_tenant!, only: [:create, :edit, :update]
+  before_action :authenticate_tenant!, only: [:new, :create, :edit, :update]
 
   def index
     if current_tenant
