@@ -1,18 +1,9 @@
-- @issues.each do |issue|
-	%b Tenant :
-	= issue.tenant.first_name
-	%br
-	%b Title :
-	= issue.title
-	%br
-	%b Message :
-	= issue.message
-	%br
-	%b Complete Date :
-	= issue.complete_date
-	%br
-	%b Status :
-	= issue.status
-	%br
-	%b Rating :
-	= issue.rating
+.row
+	%div{class: 'col-lg-12 heading'}
+		%h1.page-header
+			%i.ec-list
+			Issues
+
+.row
+	.col-lg-3
+		= render @issues

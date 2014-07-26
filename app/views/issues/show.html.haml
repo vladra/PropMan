@@ -1,56 +1,47 @@
-%b Tenant :
-= @issue.tenant.first_name
-%br
-%b Title :
-= @issue.title
-%br
-%b Message :
-= @issue.message
-%br
-%b Complete Date :
-= @issue.complete_date
-%br
-%b Status :
-= @issue.status
-%br
-%b Rating :
-= @issue.rating
-%br
-%b Comments:
-= @issue.comments.count
-%br
-%b Message
-- @issue.comments.each do |comment|
-	%b Message :
-	= comment.message
-	%br
-	%b By:
-	%br
-/ = form_for @comment do |f|
-/ 	= f.label :message
-/ 	%br
-/ 	%br
-/ 	= f.text_area :message
-/ 	%br
-/ 	%br
-/ 	= f.submit
+.row
+	%div{class: 'col-lg-12 heading'}
+		%h1.page-header
+			%i.ec-list
+			Issue details
+.row
+	.col-lg-12
+		%div{class: 'panel panel-default'}
+			.panel-heading
+				%h4.panel-title
+					%strong= @issue.title
+					%small (#{issue_duration(@issue)})
+					= show_issue_status(@issue)
+			.panel-body
+				%p= @issue.message
+				%hr
+				.row
+					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+						%p Comments: #{@comments.count}
+					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
+						= form_for @issue, html: {class: 'form-group'} do |f|
+							= f.label :status
+							= f.select :status, class: 'form-control'
 
-/ = form_for([@issue.comments.build]) do |f|
-/ 	= if @comment.errors.any?
-/ 		%div id="explanation"
-/ 		%h1 Pluralize(@comment.errors.count, "error")
-/ 		%b Prohibbitted this comment from being saved
-/ 		%ul @comment.errors.full_messages.each do |msg|
-/ 		%li msg
-= form_for([@issue, @issue.comments.build]) do |f|
-	%b Add a comment:
-	%br
-	= f.label :comment
-	%br
-	= f.text_area :message
-	%br
-	= f.submit
+.row
+	.col-lg-12
+		%div{class: 'panel-footer white-bg'}
+			%h4 New comment:
+			= form_for [@issue, @issue.comments.build], html: {class: 'form-horizontal'} do |f|
+				%div{class: 'form-group relative'}
+					= f.text_area :message, class: 'form-control elastic', rows: 3, autofocus: true
+					%div{class: 'pull-right mt10'}
+						= f.submit 'Send comment', class: 'btn btn-primary'
 
+.row
+	.col-lg-12
+		%div{class: 'panel panel-primary'}
+			.panel-heading
+				%h4.panel-title
+					%i.ec-chat
+					Comments
+			%div{class: 'panel-body p0'}
+				%ul{class: 'chat-ui chat-messages chat-widget'}
+					= render @comments
 
 
 
