@@ -22,7 +22,7 @@ class IssuesController < ApplicationController
   	if @issue.save
   		redirect_to tenants_path, notice: "Issue successfully added!"
   	else
-  		render :new
+  		redirect_to tenants_path, alert: "Issue wasnt created"
   	end
   end
 
@@ -38,7 +38,7 @@ class IssuesController < ApplicationController
   private
 
   def issue_params
-  	params.require(:issue).permit(:title, :status, :completed_date, :message, :rating, :tenant_id)
+  	params.require(:issue).permit(:title, :status, :completed_date, :message, :rating, :category_id)
   end
 
 end
