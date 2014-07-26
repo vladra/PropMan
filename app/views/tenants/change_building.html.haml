@@ -14,7 +14,7 @@
 				%h3.panel-title
 
 			.panel-body
-				= form_for @tenant, url: tenant_building_path, method: :put, html: {class: "form-horizontal group-border hover-stripped", role: "form"} do |f|
+				= form_for @tenant, url: tenants_building_path, method: :put, html: {class: "form-horizontal group-border hover-stripped", role: "form"} do |f|
 					.form-group
 						= f.label :building_id, class: "col-lg-2 col-md-2 col-sm-12 control-label"
 						%div{class: "col-lg-10 col-md-10"}

@@ -4,8 +4,10 @@ module IssuesHelper
 		case issue.status
 		when 'done'
 			return "<span class='badge badge-success'>Solved</span>".html_safe
-		when 'new'
+		when 'pending'
 			return "<span class='badge badge-warning'>In progress</span>".html_safe
+		when 'new'
+			return "<span class='badge badge-danger'>New</span>".html_safe
 		else
 			return "<span class='badge badge-default'>Unknown</span>".html_safe
 		end

@@ -7,6 +7,12 @@ class Tenant < ActiveRecord::Base
 	has_many :comments, as: :commentable
 	belongs_to :building
 
+	before_save :reset_building_status, on: [:update_building]
+
+	def reset_building_status
+		self.is_approved = nil
+	end
+
 	def full_name
 		"#{first_name} #{last_name}"
 	end

@@ -1,7 +1,7 @@
 - content_for :sidebar do
 
 	%li
-		= link_to current_tenant do
+		= link_to tenants_path do
 			Me
 			%i.ec-user
 
@@ -16,6 +16,6 @@
 			%i.ec-contract
 
 	%li
-		= link_to current_tenant do
+		= link_to tenants_issues_path do
 			My issues
 			%i.ec-list

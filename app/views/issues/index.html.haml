@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 - @issues.each do |issue|
 	%b Tenant :
 	= issue.tenant.first_name
@@ -17,3 +18,14 @@
 	%b Rating :
 	= issue.rating
 	%hr
+=======
+.row
+	%div{class: 'col-lg-12 heading'}
+		%h1.page-header
+			%i.ec-list
+			Issues
+
+.row
+	.col-lg-3
+		= render @issues
+>>>>>>> 4913d24d5e96671f549c84c23b58c0cbb6933a8a

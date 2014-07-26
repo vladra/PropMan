@@ -12,7 +12,7 @@ class TenantsController < ApplicationController
   def update_settings
   	@tenant = current_tenant
   	@tenant.update(tenant_params)
-  	redirect_to tenant_path, notice: 'Settings successfully saved!'
+  	redirect_to tenants_path, notice: 'Settings successfully saved!'
   end
 
   def change_building
@@ -22,7 +22,7 @@ class TenantsController < ApplicationController
   def update_building
   	@tenant = current_tenant
   	@tenant.update(building_params)
-  	redirect_to tenant_path, notice: 'Request successfully sent! Aproval can take some times, please check later..'
+  	redirect_to tenants_path, notice: 'Request successfully sent! Aproval can take some times, please check later..'
   end
 
 private

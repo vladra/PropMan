@@ -1,0 +1,7 @@
+%li{class: 'chat-user'}
+	%p.avatar
+		%img
+	%p.chat-name
+		= comment.commentable.full_name
+		%span.chat-time 20 minutes ago
+	%p.chat-txt= comment.message

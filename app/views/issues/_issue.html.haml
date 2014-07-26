@@ -1,0 +1,15 @@
+%div{class: 'panel panel-default'}
+	.panel-heading
+		%h4.panel-title
+			%strong= issue.title
+			%small (#{issue_duration(issue)})
+			= show_issue_status(issue)
+	.panel-body
+		%p= issue.message
+		%hr
+		.row
+			%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+				%p Category: #{issue.category.try(:name)}
+				%p Comments: #{issue.comments.count}
+			%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
+				= link_to 'Details', issue, class: 'btn btn-primary'

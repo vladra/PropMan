@@ -1,7 +1,11 @@
 class Category < ActiveRecord::Base
-	has_and_belongs_to_many :issues
+	has_many :issues
 	belongs_to :parent_category, class_name: "Category", foreign_key: :parent_id
 	has_many :subcategories, class_name: "Category", foreign_key: :parent_id
+
+	def self.build_select_options
+
+	end
 
 	def no_of_new_issues
 		issues.where(created_at: (Date.current.beginning_of_day..Date.current.end_of_day)).count
