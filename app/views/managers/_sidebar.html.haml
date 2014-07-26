@@ -1,7 +1,7 @@
 - content_for :sidebar do
 
 	%li
-		= link_to manager_path do
+		= link_to managers_path do
 			Home
 			%i.ec-user
 
@@ -11,11 +11,16 @@
 			%i.ec-cog
 
 	%li
-		= link_to new_building_path do
+		= link_to	managers_buildings_path do
+			My Buildings
+			%i.ec-contract
+
+	%li
+		= link_to new_managers_building_path do
 			Add building
 			%i.ec-contract
 
 	%li
-		= link_to issues_path do
+		= link_to do #issue_path do
 			My issues
 			%i.ec-list

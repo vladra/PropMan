@@ -1,36 +1,53 @@
 class BuildingsController < ApplicationController
 
+  def index
+    # @buildings = Building.all
+    @buildings = current_manager.buildings
+  end
+
   def new
-    @building = Building.new
+    if current_manager
+      @building = Building.new
+    end
   end
 
   def create
-    @building = Building.new(building_params)
-    if @building.save
-      redirect_to @building, :notice => "Building has been created"
-    else
-      render :new
+    if current_manager
+      @building = Building.new(building_params)
+      if @building.save
+        redirect_to managers_buildings_path, :notice => "Building has been created"
+      else
+        render :new
+      end
     end
   end
 
   def edit
-    @building = Building.find(params[:id])
+    if current_manager
+      @building = Building.find(params[:id])
+    end
   end
 
   def update
-    @building = Building.find(params[:id])
-    @building.update_attributes(building_params)
-    redirect_to @building, :notice => "Building has been updated"
+    if current_manager
+      @building = Building.find(params[:id])
+      @building.update_attributes(building_params)
+      redirect_to @manager, :notice => "Building has been updated"
+    end
   end
 
   def show
+    @building = current_manager.building
+    @tenants = @building.tenants
     @building = Building.find(params[:id])
   end
 
   def destroy
-    @building = Building.find(params[:id])
-    @building.destroy
-    redirect_to company_path
+    if current_manager
+      @building = Building.find(params[:id])
+      @building.destroy
+      redirect_to company_path
+    end
   end
 
   private
