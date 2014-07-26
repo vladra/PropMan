@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     @issue = Issue.find(params[:issue_id])
     @comment = @issue.comments.build(comment_params)
-    # @comment.user_id = current_user.id
+    @comment.commentable = current_tenant # ADD USER MODEL LOGIC HERE
     if @comment.save
       redirect_to @issue
     else
