@@ -1,3 +1,30 @@
+- content_for :sidebar do
+
+	%li
+		= link_to managers_path do
+			Home
+			%i.ec-user
+
+	%li
+		= link_to edit_manager_registration_path do
+			Edit my profile
+			%i.ec-cog
+
+	%li
+		= link_to managers_path do
+			My Buildings
+			%i.ec-contract
+
+	%li
+		= link_to new_building_path do
+			Add building
+			%i.ec-contract
+
+	%li
+		= link_to issues_path do
+			My issues
+			%i.ec-list
+
 - @buildings.each do |building|
 	= building.manager.first_name
 	= building.manager.last_name

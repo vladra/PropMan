@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   put "/managers/settings", to: 'manager#update_settings'
   get "/managers/building", to: 'manager#change_building'
   put "/managers/building", to: 'manager#update_building'
-  resource :managers, only: [:show]
+  resource :managers, only: [:show] do
+    resources :buildings, only: [:index]
+  end
 
   devise_for :tenants, controllers: {
     sessions: 'tenants/sessions',

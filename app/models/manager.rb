@@ -8,7 +8,7 @@ class Manager < ActiveRecord::Base
 	has_many :issues, through: :buildings
 	has_many :comments, as: :commentable
 
-		def no_of_new_issues
+	def no_of_new_issues
 		issues.where(created_at: (Date.current.beginning_of_day..Date.current.end_of_day)).count
 	end
 
@@ -26,6 +26,10 @@ class Manager < ActiveRecord::Base
 
 	def avg_rating
 		('%.2f' % issues.average(:rating).to_f).to_f
+	end
+
+	def new_issues
+		issues.where(created_at: (Date.current.beginning_of_day..Date.current.end_of_day))
 	end
 
 end
