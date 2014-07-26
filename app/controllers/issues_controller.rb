@@ -30,6 +30,9 @@ class IssuesController < ApplicationController
   end
 
   def update
+    @issue = Issue.find(params[:id])
+    @issue.update_attributes(issue_params)
+    redirect_to @issue
   end
 
   private
