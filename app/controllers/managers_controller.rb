@@ -4,6 +4,7 @@ class ManagersController < ApplicationController
 
   def show
     @manager = current_manager
+    @issues = @manager.issues.order('created_at desc').limit(5)
   end
 
 end
