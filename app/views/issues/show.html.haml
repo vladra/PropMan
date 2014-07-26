@@ -17,10 +17,15 @@
 				.row
 					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
 						%p Comments: #{@comments.count}
-					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
-						= form_for @issue, html: {class: 'form-group'} do |f|
-							= f.label :status
-							= f.select :status, class: 'form-control'
+						Created at: #{@issue.created_at}
+					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+						.row
+							= form_for @issue, html: {class: 'form-group'} do |f|
+								%div{class: 'col-lg-6 col-md-6'}
+									= f.select :status, Issue.statuses, {}, {class: 'form-control input-medium'}
+									%span.help-block issue status
+								%div{class: 'col-lg-6 col-md-6 text-right'}
+									= f.submit "Update status", class: 'btn btn-primary'
 
 .row
 	.col-lg-12
