@@ -1,5 +1,9 @@
 class BuildingsController < ApplicationController
 
+  # def index
+  #   @buildings = Building.all
+  # end
+
   def new
     @building = Building.new
   end
@@ -20,7 +24,7 @@ class BuildingsController < ApplicationController
   def update
     @building = Building.find(params[:id])
     @building.update_attributes(building_params)
-    redirect_to @building, :notice => "Building has been updated"
+    redirect_to @manager, :notice => "Building has been updated"
   end
 
   def show
