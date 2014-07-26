@@ -3,17 +3,18 @@ class Issue < ActiveRecord::Base
 	belongs_to :tenant
 	belongs_to :category
 
-	before_validation :set_status_new, on: [:create]
-	before_validation :check_if_done, on: [:update]
+	before_create :set_status_new
+	before_save :check_if_done
 
 	validates :category, presence: true
 
 	def set_status_new
+		puts '!!!!! STATUS SET TO NEW'
 		self.status = :new
 	end
 
 	def check_if_done
-		if self.status = 'done'
+		if self.status == 'done'
 			self.complete_date = Time.now
 		else
 			self.complete_date = nil
