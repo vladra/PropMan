@@ -1,0 +1,12 @@
+= form_for @issue, html: {role: 'form', class: 'form-vertical hover-stripped'} do |f|
+	.form-group
+		= f.label :title, class: 'control-label'
+		= f.text_field :title, class: 'form-control'
+	.form-group
+		= f.label :category_id, class: 'control-label'
+		= f.grouped_collection_select(:category_id, Category.where(parent_category: nil), :subcategories, :name, :id, :name, {prompt: "Select category.."}, {class: 'form-control'})
+	.form-group
+		= f.label :message, class: 'control-label'
+		= f.text_area :message, class: 'form-control', rows: 5
+	.form-group{class: 'mb5'}
+		= f.submit class: 'btn btn-primary'

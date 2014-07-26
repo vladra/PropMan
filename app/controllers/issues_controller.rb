@@ -16,6 +16,10 @@ class IssuesController < ApplicationController
     @comments = @issue.comments.order('created_at desc')
   end
 
+  def new
+    @issue = Issue.new
+  end
+
   def create
   	@issue = Issue.new(issue_params)
     @issue.tenant = current_tenant
@@ -27,6 +31,7 @@ class IssuesController < ApplicationController
   end
 
   def edit
+    @issue = Issue.find(params[:id])
   end
 
   def update
