@@ -2,7 +2,7 @@
 - if current_tenant
 
 	/ Display notification if Tenants building request was rejected
-	- if !current_tenant.is_approved
+	- if current_tenant.is_approved == false
 		.row
 			.col-lg-12
 				%div{class: 'alert alert-danger'}
