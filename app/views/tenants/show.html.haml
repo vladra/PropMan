@@ -80,10 +80,10 @@
 		%div{class: 'tile-stats b brall mb25'}
 			= link_to '' do
 				.tile-stats-icon
-					%i{class: 'ec-heart color-pink'}
+					%i{class: 'ec-cog color-pink'}
 				.tile-stats-content
-					.tile-stats-number WTF
-					.tile-stats-text Some aditional shit
+					.tile-stats-number= @tenant.issues.count
+					.tile-stats-text Total Issues Occurred
 				.clearfix
 
 .row
