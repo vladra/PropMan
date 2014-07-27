@@ -1,22 +1,3 @@
-/ %li
-/   = link_to do
-/     Me
-/     %i.ec-user
-
-/ %li
-/   = link_to do
-/     Edit my profile
-/     %i.ec-cog
-
-/ %li
-/   = link_to do
-/     Change building
-/     %i.ec-contract
-
-/ %li
-/   = link_to do
-/     My issues
-/     %i.ec-list
 = render 'navbar'
 = render 'sidebar'
 .row
@@ -43,7 +24,7 @@
     %div{class: 'tile-stats b brall mb25'}
       = link_to '' do
         .tile-stats-icon
-          %i{class: 'im-alarm2 color-red'}
+          %i{class: 'im-bell color-red'}
         .tile-stats-content
           .tile-stats-number= @manager.no_of_new_issues
           .tile-stats-text New Issues
@@ -52,7 +33,7 @@
     %div{class: 'tile-stats b brall mb25'}
       = link_to '' do
         .tile-stats-icon
-          %i{class: 'ec-info color-red'}
+          %i{class: 'ec-clock color-red'}
         .tile-stats-content
           .tile-stats-number #{@manager.avg_time_for_completion} days
           .tile-stats-text Average Rsponse Time
@@ -61,7 +42,7 @@
     %div{class: 'tile-stats b brall mb25'}
       = link_to '' do
         .tile-stats-icon
-          %i{class: 'ec-clock color-teal'}
+          %i{class: 'ec-info color-teal'}
         .tile-stats-content
           .tile-stats-number=@manager.avg_rating
           .tile-stats-text Average Rating
@@ -95,68 +76,12 @@
         %b Apartment
         = issue.tenant.apartment
         %br
+        %b Street
+        = issue.tenant.building.street
+        %br
+        %b City
+        = issue.tenant.building.city
+        %br
+        %b Create At
+        = issue.created_at
         %hr
-
-
-  / %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
-  /   %div{class: 'tile-stats b brall mb25'}
-  /     = link_to '' do
-  /       .tile-stats-icon
-  /         %i{class: 'ec-clock color-teal'}
-  /       .tile-stats-content
-  /         .tile-stats-number=@manager.avg_rating
-  /         .tile-stats-text Average Rating
-  /       .clearfix
-
-
-  / .row
-  / / Start .row
-  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
-  /   .carousel-tile.carousel.vertical.slide
-  /     .carousel-inner
-  /       .item.active
-  /         .tile.red
-  /           .tile-content
-  /             = @manager.issues.count
-  /             %b Total Issues
-  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
-  /   .carousel-tile.carousel.slide
-  /     .carousel-inner
-  /       .item.next.left
-  /         .tile.blue
-  /           .tile-content
-  /             = @manager.comments.count
-  /             %b Total Comments
-  /       .item.active.left
-  /         .tile.brown
-  /           .tile-content
-  /   / End Carousel
-  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
-  /   .carousel-tile.carousel.vertical.slide
-  /     .carousel-inner
-  /       .item.active
-  /         .tile.green
-  /           .tile-content
-  /             = @manager.no_of_new_issues
-  /             %b New issues
-
-  / .col-lg-3.col-md-3.col-sm-6.col-xs-12
-  /   .carousel-tile.carousel.slide
-  /     .carousel-inner
-  /       .item.next.left
-  /         .tile.teal
-  /           / tile start here
-  /           / .tile-icon
-  /           /   %i.ec-images.s64
-  /           .tile-content
-  /             %b Completion time:
-  /             = @manager.avg_time_for_completion
-  /             %b Days
-  /       .item.active.left
-  /         .tile.magenta
-  /           / tile start here
-  /           .tile-icon
-  /             %i.ec-share.s64
-  /           .tile-content
-  /             = @manager.avg_time_for_completion
-  /             %h3 New images
