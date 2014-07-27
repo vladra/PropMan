@@ -3,5 +3,5 @@
 		%img
 	%p.chat-name
 		= comment.commentable.full_name
-		%span.chat-time 20 minutes ago
+		%span.chat-time= comment.created_at
 	%p.chat-txt= comment.message

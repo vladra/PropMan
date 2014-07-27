@@ -3,18 +3,8 @@
   / Start .page-header
   .col-lg-12.heading
     %h1.page-header
-      %i.im-screen
-      Dashboard
-    / Start .bredcrumb
-    %ul#crumb.breadcrumb
-      %li
-        %i.im-home
-        %a{href: "index.html"} Home
-        %i.en-arrow-right7
-      %li
-        %i.im-screen
-        Dashboard
-        .row
+      %i.ec-user
+      = current_manager.full_name
   / Start .row
   / st-settings
 .row

@@ -45,6 +45,10 @@ class Manager < ActiveRecord::Base
 		tenants.where(is_approved: true)
 	end
 
+	def full_name
+		"#{first_name} #{last_name}"
+	end
+
 end
 
 # The following class can be placed inside a module within the /lib folder of the app

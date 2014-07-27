@@ -17,6 +17,13 @@
 					= show_issue_status(@issue)
 			.panel-body
 				%p= @issue.message
+				%p
+					%i by #{@issue.tenant.full_name}
+				%p
+					%i Apartment: #{@issue.tenant.apartment}
+				%p
+					%i Address: #{@issue.tenant.building.full_address}
+
 				%hr
 				.row
 					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
@@ -74,19 +81,3 @@
 			%div{class: 'panel-body p0'}
 				%ul{class: 'chat-ui chat-messages chat-widget'}
 					= render @comments
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
