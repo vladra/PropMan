@@ -1,0 +1,11 @@
+/ Notifications for TENANTS
+- if current_tenant
+
+	/ Display notification if Tenants building request was rejected
+	- unless current_tenant.is_approved
+		.row
+			.col-lg-12
+				%div{class: 'alert alert-danger'}
+					Your building request was
+					%string declined!
+					If this is done by mistake, contact your manager and send request again.
