@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resource :managers, only: [:show] do
     get "/buildings/requests", to: 'buildings#requests'
     put "/buildings/requests", to: 'buildings#approve'
+    resources :issues
     resources :buildings
   end
 
