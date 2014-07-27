@@ -10,11 +10,6 @@ Rails.application.routes.draw do
 
   resource :managers, only: [:show] do
     get "/buildings/requests", to: 'buildings#requests'
-# <<<<<<< HEAD
-#     put "/buildings/requests", to: 'buildings#approve'
-#     resources :issues
-#     resources :buildings
-# =======
     resources :tenants, only: [:index] do
       put 'approve'
       resources :issues, only: [:index]
