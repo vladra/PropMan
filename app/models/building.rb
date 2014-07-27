@@ -9,11 +9,15 @@ class Building < ActiveRecord::Base
 	end
 
 	def no_of_new_issues
-		issues.where(created_at: (Date.current.beginning_of_day..Date.current.end_of_day)).count
+		issues.where(status: 'new').count
 	end
 
 	def no_of_done_issues
 		issues.where(status: 'done').count
+	end
+
+	def approved_tenants
+		tenants.where(is_approved: true)
 	end
 
 	# def avg_time_for_completion
@@ -28,6 +32,10 @@ class Building < ActiveRecord::Base
 
 	def vals_for_select
 		"#{street}, #{city}, #{country}"
+	end
+
+	def full_address
+		"#{street}, #{postal_code}, #{city}, #{country}"
 	end
 
 end
