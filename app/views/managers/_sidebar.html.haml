@@ -19,15 +19,15 @@
 		%i.ec-location
 
 %li
-	= link_to managers_tenants_path do
+	= link_to managers_issues_path do
 		My issues
 		%i.ec-list
 
 %li
 	= link_to buildings_requests_managers_path do
 		Requests
-		- if current_manager.new_issues.count > 0
-			%span{class: 'badge badge-info'} new
+		- if current_manager.not_approved.count > 0
+			%span{class: 'badge badge-info'}= current_manager.not_approved.count
 		%i.ec-help
 
 %li
