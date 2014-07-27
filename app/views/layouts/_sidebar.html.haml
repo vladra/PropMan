@@ -1,8 +1,9 @@
 .sidebar-inner
 	%ul{id: 'sideNav', class: 'nav nav-pills nav-stacked'}
-		= yield :sidebar
+		- if current_tenant
+			= render 'tenants/sidebar'
+		- elsif current_manager
+			= render 'managers/sidebar'
 		%form
 
 .sidebar-panel
-%li.top-search
-
