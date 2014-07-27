@@ -1,0 +1,21 @@
+= form_for [:managers, @building], html: {class: "form-horizontal group-border hover-stripped", role: "form"} do |f|
+	.form-group
+		= f.label :street, class: "col-lg-2 col-md-2 col-sm-12 control-label"
+		%div{class: "col-lg-10 col-md-10"}
+			= f.text_field :street, class: 'form-control', placeholder: 'Enter street name'
+	.form-group
+		= f.label :city, class: "col-lg-2 col-md-2 col-sm-12 control-label"
+		%div{class: "col-lg-10 col-md-10"}
+			= f.text_field :city, class: 'form-control', placeholder: 'Enter City'
+	.form-group
+		= f.label :postal_code, class: "col-lg-2 col-md-2 col-sm-12 control-label"
+		%div{class: "col-lg-10 col-md-10"}
+			= f.text_field :postal_code, class: 'form-control', placeholder: 'Enter Postal Code'
+	.form-group
+		= f.label :country, class: "col-lg-2 col-md-2 col-sm-12 control-label"
+		%div{class: "col-lg-10 col-md-10"}
+			= f.text_field :country, class: 'form-control', placeholder: 'Enter Country'
+	.form-group
+		%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+		%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
+			= f.submit class: 'btn btn-primary'
