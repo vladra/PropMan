@@ -2,11 +2,16 @@ Rails.application.routes.draw do
 
   root "static#index"
 
-  devise_for :managers, controllers: {
+  ###################
+  # MANAGERS ROUTES #
+
+  devise_for :managers, skip: [:registrations], controllers: {
     sessions: 'managers/sessions',
-    registrations: 'managers/registrations',
     passwords: 'managers/passwords'
   }
+  as :manager do
+    resource :registration, only: [:new, :create, :edit, :update], controller: 'managers/registrations'
+  end
 
   resource :managers, only: [:show] do
     get "/buildings/requests", to: 'buildings#requests'
@@ -20,11 +25,17 @@ Rails.application.routes.draw do
     resources :issues, only: [:index]
   end
 
+  ##################
+  # TENANTS ROUTES #
+
   devise_for :tenants, controllers: {
     sessions: 'tenants/sessions',
     registrations: 'tenants/registrations',
     passwords: 'tenants/passwords'
   }
+  as :tenant do
+    resource :registration, only: [:new, :create, :edit, :update], controller: 'tenants/registrations'
+  end
 
   get "/tenants/settings", to: 'tenants#settings'
   put "/tenants/settings", to: 'tenants#update_settings'
