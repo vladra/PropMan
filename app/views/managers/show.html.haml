@@ -37,76 +37,39 @@
         .clearfix
 
 
-/ #spr_1.panel.panel-primary.panelMove.toggle.panelRefresh.panelClose
-/   / Start .panel
-/   .panel-heading
-/     %h4.panel-title Latest Issues
-/     .panel-controls.panel-controls-hide{style: "display: none;"}
-/       %a.panel-refresh{href: "#"}
-/         %i.im-spinner6
-/       %a.toggle.panel-minimize{href: "#"}
-/         %i.im-minus
-/       %a.panel-close{href: "#"}
-/         %i.im-close
-/   .panel-body
-/     %code
-/       - @issues.each do |issue|
-/         %br
-/         %b Title
-/         = issue.title
-/         %br
-/         %b Message
-/         = issue.message
-/         %br
-/         %b Tenant
-/         = issue.tenant.full_name
-/         %br
-/         %b Apartment
-/         = issue.tenant.apartment
-/         %br
-/         %b Street
-/         = issue.tenant.building.street
-/         %br
-/         %b City
-/         = issue.tenant.building.city
-/         %br
-/         %b Create At
-/         = issue.created_at
-/         %hr
-.row
-  .col-lg-12
-    %div{class: 'panel panel-default'}
-    .panel-heading
-    %h4.panel-title
-    - @issues.each do |issue|
-      %b Title
-      %strong= issue.title
-      %h4.panel-title
-      .panel-body
-      %strong Message :
-      = issue.message
-      %br
-      %strong Tenant :
-      = issue.tenant.full_name
-      %br
-      %strong Apartment :
-      = issue.tenant.apartment
-      %br
-      %strong Building :
-      = issue.tenant.building.full_address
-      %hr
-
-        / %hr
-        / .row
-        /   %div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
-        /     %p Comments: #{@comments.count}
-        /     Created at: #{@issue.created_at}
-        /   - if current_tenant && @issue.status != 'done'
-        /     %div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
-        /       .row
-        /         = form_for @issue, html: {class: 'form-group'} do |f|
-        /           %div{class: 'col-lg-6 col-md-6'}
-        /             = f.select :status, Issue.statuses, {}, {class: 'form-control input-medium'}
-        /             %span.help-block issue status
-        /           %div{class: 'col-lg-6 col-md-6 text-right'}
-        /             = f.submit "Update status", class: 'btn btn-primary'
+#spr_1.panel.panel-primary.panelMove.toggle.panelRefresh.panelClose
+  / Start .panel
+  .panel-heading
+    %h4.panel-title Latest Issues
+    .panel-controls.panel-controls-hide{style: "display: none;"}
+      %a.panel-refresh{href: "#"}
+        %i.im-spinner6
+      %a.toggle.panel-minimize{href: "#"}
+        %i.im-minus
+      %a.panel-close{href: "#"}
+        %i.im-close
+  .panel-body
+    %code
+      - @issues.each do |issue|
+        %br
+        %b Title
+        = issue.title
+        %br
+        %b Message
+        = issue.message
+        %br
+        %b Tenant
+        = issue.tenant.full_name
+        %br
+        %b Apartment
+        = issue.tenant.apartment
+        %br
+        %b Street
+        = issue.tenant.building.street
+        %br
+        %b City
+        = issue.tenant.building.city
+        %br
+        %b Create At
+        = issue.created_at
+        %hr
