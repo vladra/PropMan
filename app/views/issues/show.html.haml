@@ -22,14 +22,37 @@
 					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
 						%p Comments: #{@comments.count}
 						Created at: #{@issue.created_at}
-					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
-						.row
-							= form_for @issue, html: {class: 'form-group'} do |f|
-								%div{class: 'col-lg-6 col-md-6'}
-									= f.select :status, Issue.statuses, {}, {class: 'form-control input-medium'}
-									%span.help-block issue status
-								%div{class: 'col-lg-6 col-md-6 text-right'}
-									= f.submit "Update status", class: 'btn btn-primary'
+					- if current_tenant && @issue.status != 'done'
+						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+							.row
+								= form_for @issue, html: {class: 'form-group'} do |f|
+									%div{class: 'col-lg-6 col-md-6'}
+										= f.select :status, Issue.statuses, {}, {class: 'form-control input-medium'}
+										%span.help-block issue status
+									%div{class: 'col-lg-6 col-md-6 text-right'}
+										= f.submit "Update status", class: 'btn btn-primary'
+
+- if @issue.rating != nil
+	.row
+		.col-lg-12
+			.text-center
+				%h4.color-blue
+					Rating: #{@issue.rating}
+					%small (out of 5)
+	%br
+- elsif @issue.status == 'done'
+	.row
+		.col-lg-12
+			= form_for @issue, html: {class: 'form-horizontal'} do |f|
+				.form-group{class: 'text-center'}
+					%h3 Please rate the service
+				.form-group{class: 'text-center'}
+					- 5.times do |i|
+						= f.label i+1
+						= f.radio_button :rating, i+1
+				.form-group{class: 'text-center'}
+					= f.submit "Rate!", class: 'btn btn-s btn-primary'
+	%br
 
 .row
 	.col-lg-12

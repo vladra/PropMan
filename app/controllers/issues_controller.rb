@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :authenticate_tenant!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_tenant!, only: [:new, :create, :edit]
 
   def index
     if current_tenant
@@ -48,7 +48,7 @@ class IssuesController < ApplicationController
   private
 
   def issue_params
-  	params.require(:issue).permit(:title, :status, :completed_date, :message, :rating, :category_id)
+  	params.require(:issue).permit(:title, :status, :message, :rating, :category_id)
   end
 
 end

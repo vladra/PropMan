@@ -41,6 +41,10 @@ class Manager < ActiveRecord::Base
 		tenants.where(is_approved: nil)
 	end
 
+	def approved_tenants
+		tenants.where(is_approved: true)
+	end
+
 end
 
 # The following class can be placed inside a module within the /lib folder of the app
