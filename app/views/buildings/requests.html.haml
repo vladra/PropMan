@@ -14,10 +14,10 @@
 				.panel-body
 					.row
 						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
-							%p #{tenant.building.street}, #{tenant.apartment}
-							%p #{tenant.building.postal_code}, #{tenant.building.city}, #{tenant.building.country}
+							%p Apartment: #{tenant.apartment}
+							%p #{tenant.building.full_address}
 						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
-							= form_for tenant, url: buildings_requests_managers_path, method: :put do |f|
+							= form_for tenant, url: managers_tenant_approve_path(tenant), method: :put do |f|
 								= f.hidden_field :is_approved, value: true
-								= f.submit "Approve tenant", class: ''
+								= f.submit "Approve tenant", class: 'btn btn-success'
 
