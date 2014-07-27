@@ -7,7 +7,7 @@ class TenantsController < ApplicationController
         @building = Building.find(params[:building_id])
         @tenants = @building.approved_tenants.order(:apartment)
       else
-        @tenants = current_manager.tenants
+        @tenants = current_manager.approved_tenants
       end
     else
       redirect_to managers_path, alert: "You dont have permissions!"
@@ -40,7 +40,11 @@ class TenantsController < ApplicationController
 
   def approve
     tenant = Tenant.find(params[:tenant_id])
-    tenant.is_approved = true
+    if params[:commit] == 'approve'
+      tenant.is_approved = true
+    elsif params[:commit] == 'decline'
+      tenant.is_approved = false
+    end
     tenant.save
     redirect_to buildings_requests_managers_path, notice: "#{tenant.full_name} has been approved for #{tenant.building.full_address}, apartment: #{tenant.apartment}"
   end

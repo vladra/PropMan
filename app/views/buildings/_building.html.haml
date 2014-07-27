@@ -5,7 +5,7 @@
 	.panel-body
 		.row
 			%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
-				%p Tenants: #{building.tenants.count}
+				%p Tenants: #{building.approved_tenants.count}
 				%p Uresolved issues: #{building.unresolved_issues.count}
 			%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
 				= link_to 'Edit building', edit_managers_building_path(building), class: 'btn btn-info'

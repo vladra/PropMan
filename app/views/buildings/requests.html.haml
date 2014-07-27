@@ -18,6 +18,6 @@
 							%p #{tenant.building.full_address}
 						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
 							= form_for tenant, url: managers_tenant_approve_path(tenant), method: :put do |f|
-								= f.hidden_field :is_approved, value: true
-								= f.submit "Approve tenant", class: 'btn btn-success'
+								= f.submit "Decline tenant", value: 'decline', class: 'btn btn-danger'
+								= f.submit "Approve tenant", value: 'approve',class: 'btn btn-success'
 
