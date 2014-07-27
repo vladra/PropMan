@@ -33,6 +33,10 @@ class Manager < ActiveRecord::Base
 		issues.where(status: 'new')
 	end
 
+	def unresolved_issues
+		issues.where(status: ['new', 'pending'])
+	end
+
 	def not_approved
 		tenants.where(is_approved: nil)
 	end
