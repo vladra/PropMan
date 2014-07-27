@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :users
+
+  resources :suers
+
   root "static#index"
 
   devise_for :managers, controllers: {
