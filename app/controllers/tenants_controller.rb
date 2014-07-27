@@ -1,5 +1,18 @@
 class TenantsController < ApplicationController
-	before_action :authenticate_tenant!
+	before_action :authenticate_tenant!, except: [:approve, :index]
+
+  def index
+    if current_manager
+      if params[:building_id]
+        @building = Building.find(params[:building_id])
+        @tenants = @building.approved_tenants.order(:apartment)
+      else
+        @tenants = current_manager.tenants
+      end
+    else
+      redirect_to managers_path, alert: "You dont have permissions!"
+    end
+  end
 
   def show
   	@tenant = current_tenant
@@ -23,6 +36,13 @@ class TenantsController < ApplicationController
   	@tenant = current_tenant
   	@tenant.update(building_params)
   	redirect_to tenants_path, notice: 'Request successfully sent! Aproval can take some times, please check later..'
+  end
+
+  def approve
+    tenant = Tenant.find(params[:tenant_id])
+    tenant.is_approved = true
+    tenant.save
+    redirect_to buildings_requests_managers_path, notice: "#{tenant.full_name} has been approved for #{tenant.building.full_address}, apartment: #{tenant.apartment}"
   end
 
 private
