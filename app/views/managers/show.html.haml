@@ -68,6 +68,36 @@
         .clearfix
 
 
+#spr_1.panel.panel-primary.panelMove.toggle.panelRefresh.panelClose
+  / Start .panel
+  .panel-heading
+    %h4.panel-title Latest Issues
+    .panel-controls.panel-controls-hide{style: "display: none;"}
+      %a.panel-refresh{href: "#"}
+        %i.im-spinner6
+      %a.toggle.panel-minimize{href: "#"}
+        %i.im-minus
+      %a.panel-close{href: "#"}
+        %i.im-close
+  .panel-body
+    %code
+      - @issues.each do |issue|
+        %br
+        %b Title
+        = issue.title
+        %br
+        %b Message
+        = issue.message
+        %br
+        %b Tenant
+        = issue.tenant.full_name
+        %br
+        %b Apartment
+        = issue.tenant.apartment
+        %br
+        %hr
+
+
   / %div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
   /   %div{class: 'tile-stats b brall mb25'}
   /     = link_to '' do
