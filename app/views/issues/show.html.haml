@@ -17,6 +17,12 @@
 					= show_issue_status(@issue)
 			.panel-body
 				%p= @issue.message
+				%b By :
+				%br
+				%br
+				%p= @issue.tenant.full_name
+				%p= @issue.tenant.apartment
+				%p= @issue.tenant.building.street
 				%hr
 				.row
 					%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
