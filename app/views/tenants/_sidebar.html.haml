@@ -1,21 +1,19 @@
-- content_for :sidebar do
+%li
+	= link_to tenants_path do
+		Me
+		%i.ec-user
 
-	%li
-		= link_to tenants_path do
-			Me
-			%i.ec-user
+%li
+	= link_to tenants_settings_path do
+		Edit my profile
+		%i.ec-cog
 
-	%li
-		= link_to tenants_settings_path do
-			Edit my profile
-			%i.ec-cog
+%li
+	= link_to tenants_building_path do
+		Change building
+		%i.ec-contract
 
-	%li
-		= link_to tenants_building_path do
-			Change building
-			%i.ec-contract
-
-	%li
-		= link_to tenants_issues_path do
-			My issues
-			%i.ec-list
+%li
+	= link_to tenants_issues_path do
+		My issues
+		%i.ec-list

@@ -8,7 +8,10 @@
 
 		%nav.top-nav{role: 'navigation'}
 			%ul{class: 'nav navbar-nav pull-right'}
-				= yield :navbar
+				- if current_tenant
+					= render 'tenants/navbar'
+				- elsif current_manager
+					= render 'managers/navbar'
 
 	#header-area.fadeInDown
 		.header-area-inner

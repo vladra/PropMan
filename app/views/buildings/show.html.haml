@@ -1,64 +1,38 @@
-= @building.street
-= @building.postal_code
-= @building.city
-= @building.country
+.row
+	%div{class: "col-lg-12 heading"}
+		%h1.page-header
+			%i.ec-list
+			Issues
 
+.row
+	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+		%div{class: 'tile-stats b brall mb25'}
+			= link_to '' do
+				.tile-stats-icon
+					%i{class: 'ec-info color-red'}
+				.tile-stats-content
+					.tile-stats-number= @building.unresolved_issues.count
+					.tile-stats-text Pending issues
+				.clearfix
+	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+		%div{class: 'tile-stats b brall mb25'}
+			= link_to '' do
+				.tile-stats-icon
+					%i{class: 'ec-clock color-teal'}
+				.tile-stats-content
+					.tile-stats-number ??
+					.tile-stats-text Average response time
+				.clearfix
+	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
+		%div{class: 'tile-stats b brall mb25'}
+			= link_to '' do
+				.tile-stats-icon
+					%i{class: 'ec-heart color-pink'}
+				.tile-stats-content
+					.tile-stats-number WTF
+					.tile-stats-text Some aditional shit
+				.clearfix
 
-
-
-
-= link_to "Total tenants in the Building:"
-= @building.tenants.count
-%br
-%b Total issues in the Building:
-= @building.issues.count
-%br
-%b Done Issues :
-= @building.no_of_done_issues
-%br
-%b New Issues :
-= @building.no_of_new_issues
-%br
-%b Average time for the compleetion of an Issue :
-= @building.avg_time_for_completion
-%br
-%b Average rating of a Service by Tenant :
-= @building.avg_rating
-%b Days
-%hr
-- @building.issues.each do |issue|
-	= link_to "Title :", issue_path
-	= issue.title
-	%br
-	%br
-	%b Message :
-	= issue.message
-	%br
-	%b Tenant :
-	= issue.tenant.first_name
-	%br
-	%b Apartment :
-	= issue.tenant.apartment
-	%br
-	%b Complete Date :
-	= issue.complete_date
-	%br
-	%b Status :
-	= issue.status
-	%br
-	%b Rating :
-	= issue.rating
-	%hr
-
-
-
-
-
-
-
-
-
-
-
-
-
+.row
+	.col-lg-3
+		= render @issues

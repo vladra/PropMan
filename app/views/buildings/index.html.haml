@@ -1,86 +1,9 @@
-- content_for :sidebar do
-
-	%li
-		= link_to managers_path do
-			Home
-			%i.ec-user
-
-	%li
-		= link_to edit_manager_registration_path do
-			Edit my profile
-			%i.ec-cog
-
-	%li
-		= link_to managers_path do
-			My Buildings
-			%i.ec-contract
-
-	%li
-		= link_to new_managers_building_path do
-			Add building
-			%i.ec-contract
-
-	%li
-		= link_to managers_issues_path do
-			My issues
+.row
+	%div{class: 'col-lg-12 heading'}
+		%h1.page-header
 			%i.ec-list
+			Buildings
 
-/ do not delete the bottom part. we need this!
-
-/ = render 'navbar'
-/ .row
-/   / Start .row
-/   / Start .page-header
-/   .col-lg-12.heading
-/     %h1.page-header
-/       %i.im-screen
-/       Dashboard
-/     / Start .bredcrumb
-/     %ul#crumb.breadcrumb
-/       %li
-/         %i.im-home
-/         %a{href: "index.html"} Home
-/         %i.en-arrow-right7
-/       %li
-/         %i.im-screen
-/         Dashboard
-/         .row
-
-- @buildings.each do |building|
-	%b Street :
-	= building.street
-	%br
-	%b Postal Code
-	= building.postal_code
-	%br
-	%b City
-	= building.city
-	%br
-	%b Country
-	= building.country
-	%br
-
-/  should be under the building. but should be in different styling. should be in deiffetnt box than the above code
-- @buildings.each do |building|
-	%b New Issues
-	= building.no_of_new_issues
-	%br
-	%b Completed Issues
-	= building.no_of_done_issues
-	%br
-	%b Average Time
-	= building.avg_time_for_completion
-	%br
-	%b Average Rating
-	= building.avg_rating
-	%br
-	%b Total Tenants
-	= building.tenants.count
-
-/ - @building.tenants.each do |tenant|
-/ 	= tenant.issues
-
-
-
-
-
+.row
+	.col-lg-3
+		= render @buildings

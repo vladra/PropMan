@@ -8,11 +8,9 @@ Rails.application.routes.draw do
     passwords: 'managers/passwords'
   }
 
-  get "/managers/settings", to: 'managers#settings'
-  put "/managers/settings", to: 'manager#update_settings'
-  get "/managers/building", to: 'manager#change_building'
-  put "/managers/building", to: 'manager#update_building'
   resource :managers, only: [:show] do
+    get "/buildings/requests", to: 'buildings#requests'
+    put "/buildings/requests", to: 'buildings#approve'
     resources :buildings
   end
 

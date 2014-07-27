@@ -1,0 +1,23 @@
+.row
+	%div{class: 'col-lg-12 heading'}
+		%h1.page-header
+			%i.ec-list
+			Requests
+
+.row
+	.col-lg-3
+		- @requests.each do |tenant|
+			%div{class: 'panel panel-default'}
+				.panel-heading
+					%h4.panel-title
+						%strong= tenant.full_name
+				.panel-body
+					.row
+						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
+							%p #{tenant.building.street}, #{tenant.apartment}
+							%p #{tenant.building.postal_code}, #{tenant.building.city}, #{tenant.building.country}
+						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
+							= form_for tenant, url: buildings_requests_managers_path, method: :put do |f|
+								= f.hidden_field :is_approved, value: true
+								= f.submit "Approve tenant", class: ''
+
