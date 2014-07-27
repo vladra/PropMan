@@ -7,7 +7,7 @@ class Tenant < ActiveRecord::Base
 	has_many :comments, as: :commentable
 	belongs_to :building
 
-	before_save :reset_building_status, on: [:update_building]
+	before_validation :reset_building_status, on: [:update_building]
 
 	def reset_building_status
 		self.is_approved = nil
@@ -23,6 +23,10 @@ class Tenant < ActiveRecord::Base
 
 	def num_of_pending_issues
 		issues.where.not(status: 'done').count
+	end
+
+	def unresolved_issues
+		issues.where(status: ['new', 'pending'])
 	end
 
 	def completed_issues

@@ -38,17 +38,7 @@ class BuildingsController < ApplicationController
     @requests = current_manager.not_approved
   end
 
-  def approve
-
-  end
-
-  # def destroy
-  #   @building = Building.find(params[:id])
-  #   @building.destroy
-  #   redirect_to company_path
-  # end
-
-  private
+private
 
   def building_params
     params.require(:building).permit(:street, :postal_code, :city, :country)

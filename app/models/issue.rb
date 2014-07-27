@@ -9,7 +9,6 @@ class Issue < ActiveRecord::Base
 	validates :category, presence: true
 
 	def set_status_new
-		puts '!!!!! STATUS SET TO NEW'
 		self.status = :new
 	end
 

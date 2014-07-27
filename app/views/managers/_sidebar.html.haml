@@ -16,9 +16,25 @@
 %li
 	= link_to new_managers_building_path do
 		Add building
-		%i.ec-contract
+		%i.ec-location
 
 %li
+<<<<<<< HEAD
 	= link_to managers_issues_path do #issue_path do
+=======
+	= link_to managers_tenants_path do
+>>>>>>> d4a28011dec131819888dc652918771c82448e74
 		My issues
 		%i.ec-list
+
+%li
+	= link_to buildings_requests_managers_path do
+		Requests
+		- if current_manager.new_issues.count > 0
+			%span{class: 'badge badge-info'} new
+		%i.ec-help
+
+%li
+	= link_to managers_tenants_path do
+		My tenants
+		%i.ec-users

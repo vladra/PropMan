@@ -9,4 +9,5 @@
 				%p Uresolved issues: #{building.unresolved_issues.count}
 			%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
 				= link_to 'Edit building', edit_managers_building_path(building), class: 'btn btn-info'
+				= link_to 'Tenants', managers_building_tenants_path(building), class: 'btn btn-dark'
 				= link_to 'Details', managers_building_path(building), class: 'btn btn-primary'

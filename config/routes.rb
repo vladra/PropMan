@@ -10,9 +10,19 @@ Rails.application.routes.draw do
 
   resource :managers, only: [:show] do
     get "/buildings/requests", to: 'buildings#requests'
-    put "/buildings/requests", to: 'buildings#approve'
-    resources :issues
-    resources :buildings
+# <<<<<<< HEAD
+#     put "/buildings/requests", to: 'buildings#approve'
+#     resources :issues
+#     resources :buildings
+# =======
+    resources :tenants, only: [:index] do
+      put 'approve'
+      resources :issues, only: [:index]
+    end
+    resources :buildings do
+      resources :tenants, only: [:index]
+    end
+    resources :issues, only: [:index]
   end
 
   devise_for :tenants, controllers: {
