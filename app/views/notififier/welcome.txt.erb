@@ -1,0 +1,8 @@
+Welcome!
+Thank you for registering with PropMan.
+In order to login, please follow this link:
+<% if @role == 'tenant' %>
+	propman-production.herokuapp.com/tenants/sign_in
+<% elsif @role == 'manager' %>
+	propman-production.herokuapp.com/managers/sign_in
+<% end %>

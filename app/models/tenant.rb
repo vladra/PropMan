@@ -10,6 +10,14 @@ class Tenant < ActiveRecord::Base
 	has_attached_file :avatar, styles: {thumb: '42x42', profile: '102x102', original: '500x500'}, default_url: '/images/:style/default-avatar.png'
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+	before_save :full_name, on: [:update_settings]
+
+	after_save :send_welcome_mail
+
+	def send_welcome_mail
+		Notifier.welcome_email(self, 'tenant').deliver
+	end
+
 	def full_name
 		"#{first_name} #{last_name}"
 	end
@@ -44,7 +52,7 @@ end
 # See Manager model for more details on how this class.
 
 class Tenant::ParameterSanitizer < Devise::ParameterSanitizer
-  def account_update
-    default_params.permit(:first_name, :last_name, :phone_number)
+  def update_account_info
+    default_params.permit(:first_name, :last_name, :email, :avatar)
   end
 end

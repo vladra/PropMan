@@ -15,9 +15,7 @@ Rails.application.routes.draw do
       path: 'managers',
       path_names: { new: 'sign_up' },
       controller: 'managers/registrations',
-      as: :manager_registration do
-        # get :cancel
-      end
+      as: :manager_registration
   end
 
   resource :managers, only: [:show] do
@@ -46,7 +44,7 @@ Rails.application.routes.draw do
       path_names: { new: 'sign_up' },
       controller: 'tenants/registrations',
       as: :tenant_registration do
-        # get :cancel
+        put :update_account_info
       end
   end
 

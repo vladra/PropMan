@@ -28,6 +28,7 @@ class Issue < ActiveRecord::Base
 		end
 	end
 
+	# CONSTANTS
 	def self.manager_statuses
 		[:new, :pending]
 	end
