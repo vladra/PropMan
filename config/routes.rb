@@ -37,7 +37,6 @@ Rails.application.routes.draw do
 
   devise_for :tenants, skip: [:registrations], controllers: {
     sessions: 'tenants/sessions',
-    registrations: 'tenants/registrations',
     passwords: 'tenants/passwords'
   }
   devise_scope :tenant do
