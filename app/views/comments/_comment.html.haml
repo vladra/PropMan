@@ -1,6 +1,7 @@
 %li{class: 'chat-user'}
 	%p.avatar
-		%img
+		- if comment.commentable_type == 'Tenant'
+			= image_tag comment.commentable.avatar(:thumb)
 	%p.chat-name
 		= comment.commentable.full_name
 		%span.chat-time= comment.created_at

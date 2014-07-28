@@ -11,7 +11,11 @@
 			%div{class: 'panel-heading white-bg pl0 pr0'}
 
 			.panel-body
-				%h3.text-center= @tenant.full_name == ' ' ? "Please, add your name in settings" : @tenant.full_name
+				%div{class: 'col-lg-4 col-md-4 col-sm-12'}
+					.profile-avatar
+						= image_tag @tenant.avatar.url(:profile), class: 'img-responsive'
+				%div{class: 'col-lg-8 col-md-8 col-sm-12'}
+					%h4.text-center= @tenant.full_name == ' ' ? "Please, add your name in settings" : @tenant.full_name
 
 			.panel-body
 				%ul.profile-info

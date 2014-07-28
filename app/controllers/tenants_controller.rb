@@ -52,7 +52,7 @@ class TenantsController < ApplicationController
 private
 
 	def tenant_params
-		params.require(:tenant).permit(:first_name, :last_name, :phone_number)
+		params.require(:tenant).permit(:first_name, :last_name, :phone_number, :avatar)
 	end
 
 	def building_params

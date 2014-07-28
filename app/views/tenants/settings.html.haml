@@ -25,6 +25,10 @@
 						%div{class: "col-lg-10 col-md-10"}
 							= f.text_field :phone_number, class: 'form-control', placeholder: 'Enter your phone number'
 					.form-group
+						= f.label :avatar, class: "col-lg-2 col-md-2 col-sm-12 control-label"
+						%div{class: "col-lg-10 col-md-10"}
+							= f.file_field :avatar, class: 'form-control', placeholder: 'Enter your last name'
+					.form-group
 						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12'}
 							= link_to 'Edit password or email', edit_tenant_registration_path, class: 'btn btn-info'
 						%div{class: 'col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'}
