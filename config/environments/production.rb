@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Emails using SendGrid
-  config.action_mailer.default_url_options = { :host =&gt; 'propman-production.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'propman-production.herokuapp.com'}
 
   config.action_mailer.delivery_method = :smtp
 
