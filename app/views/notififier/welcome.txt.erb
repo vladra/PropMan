@@ -1,8 +1,10 @@
 Welcome!
 Thank you for registering with PropMan.
-In order to login, please follow this link:
 <% if @role == 'tenant' %>
-	propman-production.herokuapp.com/tenants/sign_in
+Please go to "Change Building" page and select your building in order to connect with your manager!
+In order to login, please follow this link:
+propman-production.herokuapp.com/tenants/sign_in
 <% elsif @role == 'manager' %>
-	propman-production.herokuapp.com/managers/sign_in
+In order to login, please follow this link:
+propman-production.herokuapp.com/managers/sign_in
 <% end %>
