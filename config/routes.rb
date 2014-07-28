@@ -9,8 +9,15 @@ Rails.application.routes.draw do
     sessions: 'managers/sessions',
     passwords: 'managers/passwords'
   }
-  as :manager do
-    resource :registration, only: [:new, :create, :edit, :update], controller: 'managers/registrations'
+  devise_scope :manager do
+    resource :registration,
+      only: [:new, :create, :edit, :update],
+      path: 'managers',
+      path_names: { new: 'sign_up' },
+      controller: 'managers/registrations',
+      as: :manager_registration do
+        # get :cancel
+      end
   end
 
   resource :managers, only: [:show] do
@@ -28,13 +35,20 @@ Rails.application.routes.draw do
   ##################
   # TENANTS ROUTES #
 
-  devise_for :tenants, controllers: {
+  devise_for :tenants, skip: [:registrations], controllers: {
     sessions: 'tenants/sessions',
     registrations: 'tenants/registrations',
     passwords: 'tenants/passwords'
   }
-  as :tenant do
-    resource :registration, only: [:new, :create, :edit, :update], controller: 'tenants/registrations'
+  devise_scope :tenant do
+    resource :registration,
+      only: [:new, :create, :edit, :update],
+      path: 'tenants',
+      path_names: { new: 'sign_up' },
+      controller: 'tenants/registrations',
+      as: :tenant_registration do
+        # get :cancel
+      end
   end
 
   get "/tenants/settings", to: 'tenants#settings'
