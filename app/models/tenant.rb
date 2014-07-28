@@ -12,7 +12,7 @@ class Tenant < ActiveRecord::Base
 
 	before_save :full_name, on: [:update_settings]
 
-	after_save :send_welcome_mail
+	after_create :send_welcome_mail
 
 	def send_welcome_mail
 		Notifier.welcome_email(self, 'tenant').deliver

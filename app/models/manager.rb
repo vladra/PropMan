@@ -9,7 +9,7 @@ class Manager < ActiveRecord::Base
 	has_many :issues, through: :buildings
 	has_many :comments, as: :commentable
 
-	after_save :send_welcome_mail
+	after_create :send_welcome_mail
 
 	def send_welcome_mail
 		Notifier.welcome_email(self, 'tenant').deliver
