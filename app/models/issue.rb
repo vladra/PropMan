@@ -28,8 +28,11 @@ class Issue < ActiveRecord::Base
 		end
 	end
 
-	def self.statuses
-		[:new, :pending, :done]
+	def self.manager_statuses
+		[:new, :pending]
+	end
+	def self.tenant_statuses
+		[:pending, :done]
 	end
 
 end

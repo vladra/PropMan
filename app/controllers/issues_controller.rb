@@ -7,9 +7,9 @@ class IssuesController < ApplicationController
     elsif current_manager
       if params[:tenant_id]
         @tenant = Tenant.find(params[:tenant_id])
-        @issues = @tenant.issues
+        @issues = @tenant.issues.order('created_at desc')
       else
-        @issues = current_manager.unresolved_issues
+        @issues = current_manager.unresolved_issues.order('created_at desc')
       end
     else
       redirect_to root_path
