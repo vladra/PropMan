@@ -13,11 +13,34 @@ class Building < ActiveRecord::Base
 	end
 
 	def no_of_done_issues
-		issues.where(status: 'done').count
+		completed_issues.count
 	end
 
 	def approved_tenants
 		tenants.where(is_approved: true)
+	end
+
+	def completed_issues
+		issues.where(status: 'done')
+	end
+
+	def avg_issue_time
+		d = completed_issues
+		if d.any?
+			(d.reduce(0) {|t, i| t+= (i.complete_date - i.created_at)} / d.count / 60 / 60 / 24).floor
+		else
+			'--'
+		end
+	end
+
+	def avg_issues_rating
+		i = completed_issues
+		if i.count > 0
+			avg = i.reduce(0) {|t, i| t+=i.rating}
+			avg /= i.count
+		else
+			'--'
+		end
 	end
 
 	# def avg_time_for_completion
