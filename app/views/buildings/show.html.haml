@@ -12,7 +12,7 @@
 					%i{class: 'ec-info color-red'}
 				.tile-stats-content
 					.tile-stats-number= @building.unresolved_issues.count
-					.tile-stats-text Pending issues
+					.tile-stats-text New Issues
 				.clearfix
 	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
 		%div{class: 'tile-stats b brall mb25'}
@@ -20,17 +20,17 @@
 				.tile-stats-icon
 					%i{class: 'ec-clock color-teal'}
 				.tile-stats-content
-					.tile-stats-number ??
+					.tile-stats-number #{@building.avg_issue_time} Days
 					.tile-stats-text Average response time
 				.clearfix
 	%div{class: 'col-lg-2 col-md-4 col-sm-6 col-xs-12'}
 		%div{class: 'tile-stats b brall mb25'}
 			= link_to '' do
 				.tile-stats-icon
-					%i{class: 'ec-heart color-pink'}
+					%i{class: 'ec-info color-pink'}
 				.tile-stats-content
-					.tile-stats-number WTF
-					.tile-stats-text Some aditional shit
+					.tile-stats-number= @building.avg_issues_rating
+					.tile-stats-text Average Rating
 				.clearfix
 
 .row

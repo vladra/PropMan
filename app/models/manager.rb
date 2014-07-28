@@ -24,10 +24,12 @@ class Manager < ActiveRecord::Base
 	end
 
 	def avg_time_for_completion
-		if issues.count > 0
+		if issues.where(status: 'done').count > 0
 			(issues.where(status: 'done').pluck(:complete_date, :created_at).reduce(0) do |total, (complete_date, created_at)|
 				total += complete_date - created_at
 			end / issues.where(status: 'done').count / 3600 / 24).floor
+		else
+			0
 		end
 	end
 
