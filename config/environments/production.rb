@@ -1,6 +1,21 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Emails using SendGrid
+  config.action_mailer.default_url_options = { :host =&gt; 'propman-production.herokuapp.com'}
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: 25,
+    domain: "heroku.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"]
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
