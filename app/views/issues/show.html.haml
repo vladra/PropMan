@@ -22,7 +22,7 @@
 				%p
 					%i Apartment: #{@issue.tenant.apartment}
 				%p
-					%i Address: #{@issue.tenant.building.full_address}
+					%i Address: #{@issue.tenant.building.try(:full_address)}
 
 				%hr
 				.row
