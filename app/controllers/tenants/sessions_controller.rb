@@ -1,11 +1,11 @@
 class Tenants::SessionsController < Devise::SessionsController
 
-	# def create
-	# 	super
-	# 	if current_manager
-	# 		sign_out current_manager
-	# 	end
-	# end
+	def create
+		super
+		if current_manager
+			sign_out current_manager
+		end
+	end
 
 protected
 
