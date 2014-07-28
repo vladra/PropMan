@@ -34,7 +34,10 @@ class TenantsController < ApplicationController
 
   def update_building
   	@tenant = current_tenant
-  	@tenant.update(building_params)
+    @tenant.building_id = params[:tenant][:building_id]
+    @tenant.apartment = params[:tenant][:apartment]
+    @tenant.is_approved = nil
+    @tenant.save
   	redirect_to tenants_path, notice: 'Request successfully sent! Aproval can take some times, please check later..'
   end
 

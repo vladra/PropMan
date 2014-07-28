@@ -10,12 +10,6 @@ class Tenant < ActiveRecord::Base
 	has_attached_file :avatar, styles: {thumb: '42x42', profile: '102x102', original: '500x500'}, default_url: '/images/:style/default-avatar.png'
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-	before_validation :reset_building_status, on: [:update_building]
-
-	def reset_building_status
-		self.is_approved = nil
-	end
-
 	def full_name
 		"#{first_name} #{last_name}"
 	end
