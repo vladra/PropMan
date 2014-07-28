@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     passwords: 'managers/passwords'
   }
 
+  get "/managers/settings", to: 'managers#settings'
+  put "/managers/settings", to: 'managers#update_settings'
+
   resource :managers, only: [:show] do
     get "/buildings/requests", to: 'buildings#requests'
     resources :tenants, only: [:index] do
