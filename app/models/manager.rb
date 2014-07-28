@@ -12,7 +12,7 @@ class Manager < ActiveRecord::Base
 	after_create :send_welcome_mail
 
 	def send_welcome_mail
-		Notifier.welcome_email(self, 'tenant').deliver
+		Notifier.welcome_email(self, 'manager').deliver
 	end
 
 	def no_of_new_issues
