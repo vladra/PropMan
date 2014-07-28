@@ -9,6 +9,12 @@ class Manager < ActiveRecord::Base
 	has_many :issues, through: :buildings
 	has_many :comments, as: :commentable
 
+	after_save :send_welcome_mail
+
+	def send_welcome_mail
+		Notifier.welcome_email(self, 'tenant').deliver
+	end
+
 	def no_of_new_issues
 		issues.where(status: 'new').count
 	end
@@ -63,6 +69,6 @@ end
 
 class Manager::ParameterSanitizer < Devise::ParameterSanitizer
   def account_update
-    default_params.permit(:first_name, :last_name, :phone_number)
+    default_params.permit(:first_name, :last_name, :phone_number, :email, :password, :password_confirmation)
   end
 end
