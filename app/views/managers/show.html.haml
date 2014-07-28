@@ -36,44 +36,11 @@
           .tile-stats-text Average Rating
         .clearfix
 
+.row
+  .col-lg-3{class: 'color-blue text-center mb20'}
+    %h3 Recent issues
 
-#spr_1.panel.panel-primary.panelMove.toggle.panelRefresh.panelClose
-  / Start .panel
-  .panel-heading
-    %h4.panel-title Latest Issues
-    .panel-controls.panel-controls-hide{style: "display: none;"}
-      %a.panel-refresh{href: "#"}
-        %i.im-spinner6
-      %a.toggle.panel-minimize{href: "#"}
-        %i.im-minus
-      %a.panel-close{href: "#"}
-        %i.im-close
-  .panel-body
-    %code
-      - @issues.each do |issue|
-        %br
-        %b Title
-        = issue.title
-        %br
-        %b Message
-        = issue.message
-        %br
-        %b Tenant
-        = issue.tenant.full_name
-        %br
-        %b Apartment
-        = issue.tenant.apartment
-        %br
-        %b Street
-        = issue.tenant.building.street
-        %br
-        %b City
-        = issue.tenant.building.city
-        %br
-        %b Create At
-        = issue.created_at
-        %hr
-
-
-
+.row
+  .col-lg-3
+    = render @issues
 
