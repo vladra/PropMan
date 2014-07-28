@@ -1,3 +1,39 @@
+c = Category.create(name: "Electric")
+c.subcategories << Category.create(name: "Wiring")
+c.subcategories << Category.create(name: "Other")
+
+c = Category.create(name: "Kitchen")
+c.subcategories << Category.create(name: "Oven")
+c.subcategories << Category.create(name: "Microwave")
+c.subcategories << Category.create(name: "Dish Washer")
+c.subcategories << Category.create(name: "Refrigerator")
+c.subcategories << Category.create(name: "Other")
+
+c = Category.create(name: "Plumbing")
+c.subcategories << Category.create(name: "Toilet")
+c.subcategories << Category.create(name: "Sink")
+c.subcategories << Category.create(name: "Bath Tub")
+c.subcategories << Category.create(name: "Shower")
+c.subcategories << Category.create(name: "Tap")
+c.subcategories << Category.create(name: "Other")
+
+c = Category.create(name: "Laundry")
+c.subcategories << Category.create(name: "Washer")
+c.subcategories << Category.create(name: "Dryer")
+c.subcategories << Category.create(name: "Other")
+
+c = Category.create(name: "Repair")
+c.subcategories << Category.create(name: "Roof")
+c.subcategories << Category.create(name: "Drainage")
+c.subcategories << Category.create(name: "Doors")
+c.subcategories << Category.create(name: "Windows")
+
+c = Category.create(name: "Other")
+c.subcategories << Category.create(name: "Parking")
+c.subcategories << Category.create(name: "Garage")
+c.subcategories << Category.create(name: "Land Scaping")
+c.subcategories << Category.create(name: "Other")
+
 # buildings = 100
 # tenants = [1, 1, 2, 2, 2, 3, 3, 3, 4, 5]
 # app_per_building = (20..100)
