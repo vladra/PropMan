@@ -53,6 +53,6 @@ end
 
 class Tenant::ParameterSanitizer < Devise::ParameterSanitizer
   def update_account_info
-    default_params.permit(:first_name, :last_name, :email, :avatar)
+    default_params.permit(:first_name, :last_name, :phone_number, :email, :avatar)
   end
 end
