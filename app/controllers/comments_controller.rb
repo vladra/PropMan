@@ -1,9 +1,13 @@
 class CommentsController < ApplicationController
-  # remember to add a filter here !!!!!!!!!!!!!!!!!!!
+
   def create
     @issue = Issue.find(params[:issue_id])
     @comment = @issue.comments.build(comment_params)
-    @comment.commentable = current_tenant # ADD USER MODEL LOGIC HERE
+    if current_tenant
+      @comment.commentable = current_tenant
+    elsif current_manager
+      @comment.commentable = current_manager
+    end
     if @comment.save
       redirect_to @issue
     else
